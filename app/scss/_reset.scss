@@ -9,7 +9,7 @@ html {
 }
 
 ul,
-ol {
+ol  {
   padding: 0;
 }
 
@@ -58,8 +58,9 @@ a {
   color: inherit;
 }
 
-// button {
-//   padding: 0;
-//   background-color: transparent;
-//   cursor: pointer;
-// }
+button {
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+}

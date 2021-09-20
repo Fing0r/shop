@@ -1,0 +1,14 @@
+body {
+  font-size: 14px;
+  line-height: 1.4;
+  background-color: $white;
+  color: $dark-500;
+  letter-spacing: 0.03em;
+  @extend %opensans-400;
+}
+
+.container {
+  max-width: 1320px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
