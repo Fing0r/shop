@@ -1,6 +1,7 @@
 $green-900: #63A60F;
 $green-200: #E0EDCF;
 $green-100: #EFF6E7;
+$green-1200: #4D810C;
 $dark-900: #121212;
 $dark-800: #31352B;
 $dark-500: #505050;
@@ -10,7 +11,8 @@ $yellow-900: #FFB800;
 $silver-600: #C1C1C1;
 $silver-100: #F6F6F6;
 $white: #FFFFFF;
-
+$black: #000000;
+$black-400: #2b2b2b;
 
 
 %opensans-300 {
@@ -46,4 +48,40 @@ $white: #FFFFFF;
 %ruda-700 {
   font-family: 'Ruda-Bold', sans-serif;
   font-weight: 700;
+}
+
+%ruda-900 {
+  font-family: 'Ruda-Black', sans-serif;
+  font-weight: 900;
+}
+
+%btn {
+  padding: 12px 24px;
+  font-size: 18px;
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+  background-color: $green-900;
+  @extend %opensans-400;
+  color: $white;
+  border-radius: 6px;
+  cursor: pointer;
+  border: transparent;
+  display: inline-block;
+  transition: all 0.3s;
+
+  &:focus {
+    box-shadow: 0px 0px 0px 4px $green-200;
+    padding: 12px 20px;
+    transform: translateX(4px);
+  }
+
+  &:hover {
+    background-color: $green-1200;
+  }
+
+  &:active {
+    box-shadow: inset 0px 4px 4px rgba($black, 0.25);
+    background-color: $green-900;
+    color: rgba($white, 0.5);
+  }
 }
