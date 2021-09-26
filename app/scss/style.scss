@@ -182,8 +182,6 @@
     letter-spacing: 0.03em;
 
     &:focus {
-      transform: translateX(0);
-      padding: 0 52px;
       box-shadow: 0 0 0 4px rgba($white, 0.5)
     }
 
@@ -370,6 +368,7 @@
   font-size: 32px;
   @extend %ruda;
   font-weight: 600;
+  // letter-spacing: 0.03em;
   display: block;
   text-align: center;
   text-transform: uppercase;
@@ -377,6 +376,7 @@
 }
 
 .best-products {
+  text-align: center;
 
   &__list {
     display: grid;
@@ -386,20 +386,11 @@
   }
 
   &__add {
-    display: block;
-    margin: auto 0;
-    text-align: center;
-  }
-
-  &__link {
+    display: inline-block;
     padding: 12px 23px;
     color: $green-900;
     background-color: $white;
     border: 1px solid $green-900;
-
-    &:focus {
-      transform: translateX(0);
-    }
 
     &:hover {
       background-color: $green-100;
@@ -416,13 +407,15 @@
 .product-filters {
   display: flex;
   justify-content: center;
-  margin-bottom: 48px;
+  margin-bottom: 49px;
   display: flex;
   font-size: 15px;
   @extend %opensans;
   font-weight: 700;
 
+
   &__filter {
+
     &:not(:last-child) {
       margin-right: 24px;
     }
@@ -431,6 +424,10 @@
   &__btn {
     text-transform: uppercase;
     transition: border-bottom-width 0.3s;
+
+    &--ls {
+      letter-spacing: 0.1em;
+    }
 
     &:hover {
       border-bottom: 3px solid $green-200;
@@ -445,27 +442,37 @@
 .product-card {
   max-width: 300px;
   border: 1px solid rgba($black-400, 0.2);
+  background-color: $white;
   border-radius: 6px;
   transition: border-color 0.3s;
   padding: 56px 0 17px;
   position: relative;
   text-align: left;
 
+  &--min {
+    display: flex;
+    padding: 11px;
+  }
+
   &:hover {
     border: 1px solid $green-900;
   }
 
-  &__badges {
+  &__badges,
+  &__status {
     text-transform: uppercase;
+    font-size: 10px;
+    line-height: 1;
+    @extend %opensans;
+  }
+
+  &__badges {
     position: absolute;
     left: 11px;
     top: 11px;
     display: flex;
     flex-direction: column;
-    font-size: 10px;
-    line-height: 1;
     align-items: flex-start;
-    @extend %opensans;
     font-weight: 700;
   }
 
@@ -506,15 +513,29 @@
 
   &__img {
     margin-bottom: 18px;
+
+    &--min {
+      margin: 0;
+      margin-right: 12px;
+      align-self: center;
+    }
   }
 
   &__title {
     @extend %opensans;
+    letter-spacing: 0.03em;
     font-size: 14px;
     font-weight: 600;
     padding: 0 17px;
     margin-bottom: 9px;
     min-height: 60px;
+
+    &--min {
+      width: 164px;
+      min-height: 58px;
+      margin-bottom: 7px;
+      padding: 0;
+    }
   }
 
   &__info {
@@ -522,6 +543,29 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+
+    &--min {
+      display: block;
+      padding: 0;
+    }
+  }
+
+  &__status {
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: block;
+
+    &--in-stock {
+      color: $green-900;
+    }
+
+    &--running-out {
+      color: $red-900
+    }
+
+    &--not-available {
+      color: $silver-600
+    }
   }
 
   &__offers {
@@ -529,21 +573,49 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
+    &--min {
+      flex-direction: row;
+      align-items: baseline;
+      font-size: 12px;
+      max-width: 119px;
+      width: 100%;
+      margin-right: 3px;
+    }
   }
 
-  &__price--old {
-    margin-bottom: 3px;
-    position: relative;
-    color: $silver-600;
+  &__price {
+    &--min {
+      font-size: 20px;
+      font-weight: 600;
+      margin-right: 15px;
 
-    &::after {
-      content: '';
-      position: absolute;
-      border-bottom: 1px solid $silver-600;
-      width: 98%;
-      height: 50%;
-      left: 0;
-      transform: rotate(-13.99deg);
+      &::after {
+        content: "₽";
+        font-size: 14px;
+      }
+
+      //Это для уменьшения ₽ в цене, для маленькой карточки товара, сперва делал через добавление в html <small>₽</small>, и потом в css & small {font-size: 14px;}, по другому не нашел как это реализовать
+    }
+
+    &--old {
+      margin-bottom: 3px;
+      position: relative;
+      color: $silver-600;
+
+      &::after {
+        content: '';
+        position: absolute;
+        border-bottom: 1px solid $silver-600;
+        width: 98%;
+        height: 50%;
+        left: 0;
+        transform: rotate(-13.99deg);
+      }
+    }
+
+    &--min-old {
+      margin-bottom: 0;
     }
   }
 
@@ -560,7 +632,30 @@
 
     &:focus {
       padding: 0;
-      transform: translateX(0);
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+  }
+
+  &__rating {
+    line-height: 1;
+    font-weight: 700;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background-image: url('../images/icons/star.svg');
+      right: -18px;
+      top: 50%;
+      bottom: 50%;
+      transform: translateY(-50%);
+
     }
   }
 }
@@ -587,23 +682,23 @@
 
     &--fruits {
       color: $white;
-      text-shadow: 1px 1px 0 rgba($white, 0.25);
+      text-shadow: 1px 1px 0 rgba($black, 0.25);
     }
   }
 
-  &__subtitle,
+  &__title,
   &__link {
     line-height: 1;
   }
 
-  &__subtitle {
+  &__title {
     font-size: 12px;
     letter-spacing: 0.1em;
     margin-bottom: 17px;
 
   }
 
-  &__title {
+  &__subtitle {
     max-width: 160px;
     font-size: 30px;
     margin-bottom: 9px;
@@ -633,7 +728,131 @@
   }
 }
 
+.promotions {
+  text-align: center;
+  background-color: $silver-100;
+  padding: 72px 0;
 
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px;
+    margin-bottom: 47px;
+  }
+
+}
+
+.brands {
+  &__items {
+    padding: 0 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__link {
+    opacity: 0.5;
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 1;
+    }
+
+  }
+
+}
+
+.shope-news {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+  }
+
+  &__title {
+    margin-bottom: 0;
+
+  }
+
+  &__link {
+    line-height: 1;
+    color: $green-900;
+    border-bottom: 2px solid $green-900;
+    align-self: center;
+    padding: 0 6px 6px 0;
+    transition: color 0.3s;
+    font-weight: 700;
+
+    &:hover {
+      color: $green-1200
+    }
+
+    &:active {
+      color: $green-1200
+    }
+  }
+
+  &__items {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__item {
+    box-shadow: 0 3px 3px rgba($black, 0.25);
+    border-radius: 6px;
+    max-width: 410px;
+    position: relative;
+  }
+
+  &__img {
+    border-radius: 6px 6px 0 0;
+  }
+
+  &__info {
+    padding: 18px;
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $green-900;
+    }
+  }
+
+  &__date {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    max-width: 65px;
+    width: 100%;
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    padding: 18px 0 10px;
+    text-align: center;
+    border-radius: 0 0 4px 4px;
+    color: $dark-900;
+    text-transform: uppercase;
+  }
+
+  &__mount {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  &__num {
+    font-size: 30px;
+    line-height: 1;
+    @extend %ruda;
+    font-weight: 600;
+  }
+}
 
 
 .footer {
@@ -724,11 +943,6 @@
     color: $white;
     font-size: 12px;
     text-transform: uppercase;
-
-    &:focus {
-      transform: translateX(0);
-      padding: 12px;
-    }
   }
 }
 
