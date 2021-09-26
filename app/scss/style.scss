@@ -24,9 +24,6 @@
   &__wrapper {
     display: flex;
     justify-content: space-between;
-    // max-width: 1320px;
-    // padding: 0 15px;
-    // margin: 0 auto;
   }
 
   &__nav {
@@ -114,11 +111,24 @@
   background-color: $white;
   border-radius: 6px;
   position: relative;
-  transition: border-radius 0.3s, background-color 0.3s;
+  z-index: 2;
+  transition: border-radius 0.2s, background-color 0.3s;
+
 
   &:hover {
     background-color: $green-200;
     border-radius: 6px 6px 0 0;
+    &::after {
+      transform: rotate(180deg);
+    }
+  }
+
+  &:hover>&__items {
+    display: block;
+    top: 49px;
+    transform-origin: 100% 0;
+    transform: scaleY(1);
+    transition: transform 0.4s ease-in-out;
   }
 
   &::before {
@@ -141,7 +151,37 @@
     top: 50%;
     transform: translateY(-45%);
   }
+
+  &__items {
+    position: absolute;
+    max-width: 240px;
+    width: 100%;
+    color: $black;
+    background-color: $white;
+    left: 0;
+    transform: scaleY(0);
+    top: -9999px;
+    border-radius: 0 0 6px 6px;
+    text-align: start;
+  }
+
+  &__link {
+    display: block;
+    padding: 12px 24px;
+    border: 1px solid rgba($silver-600, 0.3);
+    font-size: 16px;
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+    font-weight: 400;
+    transition: color 0.1s, border-left 0.1s;
+
+    &:hover {
+      color: $green-900;
+      border-left: 3px solid $green-900;
+    }
+  }
 }
+
 
 .search {
   max-width: 576px;
@@ -314,12 +354,13 @@
 
 .advantages {
   background-color: $silver-100;
-  padding: 49px 0 29px;
+  padding: 48px 0 30px;
   letter-spacing: 0;
 
   &__items {
     display: flex;
     justify-content: center;
+    padding-left: 20px;
   }
 
   &__item {
@@ -742,7 +783,7 @@
 
 }
 
-.brands {
+.partners {
   &__items {
     padding: 0 55px;
     display: flex;
