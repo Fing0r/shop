@@ -112,24 +112,28 @@
   border-radius: 6px;
   position: relative;
   z-index: 2;
-  transition: border-radius 0.2s, background-color 0.3s;
+  transition: border-radius 0.8s, background-color 0.5s;
 
 
   &:hover {
     background-color: $green-200;
     border-radius: 6px 6px 0 0;
+
     &::after {
-      transform: rotate(180deg);
+      transform: scale(1, -1);
+      transition: transform 0.3s;
     }
   }
 
   &:hover>&__items {
     display: block;
     top: 49px;
-    transform-origin: 100% 0;
     transform: scaleY(1);
+    transform-origin: 100% 0;
+    opacity: 1;
     transition: transform 0.4s ease-in-out;
   }
+  
 
   &::before {
     content: '';
@@ -154,15 +158,18 @@
 
   &__items {
     position: absolute;
+    top: 100%;
+    left: 0;
     max-width: 240px;
     width: 100%;
     color: $black;
     background-color: $white;
-    left: 0;
-    transform: scaleY(0);
-    top: -9999px;
     border-radius: 0 0 6px 6px;
     text-align: start;
+    transform: scaleY(0);
+    opacity: 0.7;
+    transform-origin :0 0;
+    transition: transform 0.3s ease-in-out, opacity 0.3s, transform-origin 0.3s;
   }
 
   &__link {
