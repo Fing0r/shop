@@ -1,5 +1,6 @@
 @import 'fonts';
 @import 'vars';
+@import 'mixin';
 @import 'libs';
 @import 'reset';
 @import 'global';
@@ -13,12 +14,16 @@
     font-size: 13px;
     background-color: $dark-800;
     color: $white;
-    position: absolute;
+    // position: absolute;
     left: 0;
     right: 0;
     text-transform: uppercase;
     @extend %opensans;
     font-weight: 700;
+
+    @include r($xl) {
+      padding: 15px 0;
+    }
   }
 
   &__wrapper {
@@ -27,31 +32,184 @@
   }
 
   &__nav {
-    padding: 75px 0 25px 0;
+    padding: 25px 0;
+
+    @include r($xga) {
+      padding: 20px 0;
+    }
+
+    @include r($ml) {
+      padding: 10px 0;
+    }
+  }
+
+  &__inner {
     display: flex;
     align-items: center;
+
+    @include r($xl) {
+      justify-content: space-between;
+    }
   }
 
   &__logo {
     margin-right: 24px;
+
+    @include r($xga) {
+      margin-right: 15px;
+    }
+
+    @include r($xl) {
+      display: none;
+    }
+  }
+
+  &__logo-mobile {
+    display: none;
+
+    @include r($xl) {
+      display: block;
+    }
   }
 
   &__catalog {
     margin-right: 30px;
+
+    @include r($xga) {
+      margin-right: 20px;
+    }
   }
 
   &__search {
     margin-right: 46px;
+
+    @include r($xga) {
+      margin-right: 20px;
+    }
+
+    @include r($xl) {
+      margin-right: 0;
+    }
+  }
+}
+
+.mobile__btn {
+  display: none;
+  position: relative;
+  z-index: 99;
+  height: 20px;
+  width: 30px;
+
+  @include r($xl) {
+    display: block;
+  }
+
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    left: 0;
+    background-color: #fff;
+    transition: transform 0.4s;
+  }
+
+  & span {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    left: 0;
+    top: 9px;
+    transition: transform 0.4s;
+  }
+
+  &::after {
+    bottom: 0;
+  }
+
+  &::before {
+    top: 0;
+  }
+}
+
+.menu-mobile {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  width: 100%;
+  background-color: $white;
+  border: 1px solid #EBEBEB;
+  display: none;
+  z-index: 999;
+  transform: translateX(-100%);
+  transition: transform 0.3s;
+  overflow: auto;
+
+  &--active {
+    transform: translateX(0);
+  }
+
+  @include r($xl) {
+    display: block;
+  }
+
+  &__logo {
+    margin-bottom: 26px;
+    display: inline-block;
+  }
+
+  &__btn {
+    position: absolute;
+    right: 26px;
+    top: 47px;
+  }
+
+  &__user {
+    background-color: $green-900;
+    font-size: 18px;
+    line-height: 1;
+    color: $white;
+    padding: 15px 58px 15px 56px;
+    background-image: url('../images/icons/user.svg');
+    background-position: 15px center;
+    background-repeat: no-repeat;
+    display: block;
+  }
+
+  &__catalog {
+    display: block;
+    font-size: 18px;
+    line-height: 1;
+    padding: 15px 86px 15px 56px;
+    background-image: url('../images/icons/nav.svg');
+    background-position: 15px center;
+    background-repeat: no-repeat;
+    border-bottom: 1px solid rgba($silver-600, 0.3);
   }
 }
 
 .contacts {
-  padding-left: 45px;
   display: flex;
+
+  @include r($xl) {
+    font-size: 0;
+  }
 
   &__list {
     &:not(:last-child) {
-      margin-right: 81px;
+      margin-right: 48px;
+
+      @include r($xl) {
+        margin-right: 0;
+      }
     }
   }
 
@@ -63,38 +221,65 @@
       opacity: 0.7;
     }
 
-    &::after {
-      content: '';
-      position: absolute;
-      width: 32px;
-      height: 22px;
+    &--address,
+    &--tel {
+      &::after {
+        content: '';
+        position: absolute;
+        width: 32px;
+        height: 23px;
+        left: 0;
+        top: -3px;
+
+        @include r($xl) {
+          top: -1px;
+        }
+      }
     }
 
-    &--address::after {
-      left: -45px;
-      top: -3px;
-      background-image: url('../images/icons/del-address.svg');
+    &--address {
+      padding-left: 45px;
+
+      @include r($xl) {
+        padding-left: 55px
+      }
+
+      &::after {
+        background-image: url('../images/icons/del-address.svg');
+      }
     }
 
-    &--tel::after {
-      top: -3px;
-      left: -34px;
-      background-image: url('../images/icons/tel.svg');
-      width: 22px;
+    &--tel {
+      padding-left: 34px;
+
+      @include r($xl) {
+        padding-left: 15px;
+      }
+
+      &::after {
+        background-image: url('../images/icons/tel.svg');
+        width: 22px;
+      }
     }
   }
 }
 
-
-
 .info {
   display: flex;
+
+  @include r($xl) {
+    display: none;
+  }
 
   &__list {
     transition: opacity 0.3s;
 
     &:not(:last-child) {
       margin-right: 24px;
+
+      @include r($xl) {
+        margin-right: 18px;
+      }
     }
 
     &:hover {
@@ -104,6 +289,8 @@
 }
 
 .catalog {
+  max-width: 240px;
+  width: 100%;
   padding: 15px 38px 15px 61px;
   @extend %opensans;
   font-weight: 600;
@@ -114,24 +301,42 @@
   z-index: 2;
   transition: border-radius 0.8s, background-color 0.5s;
 
+  @include r($xl) {
+    display: none;
+  }
+
+  &--inactive,
+  &--active {
+    &::after {
+      content: '';
+      background-image: url('../images/icons/arrow-down.svg');
+      width: 7px;
+      height: 4px;
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-45%);
+      transition: transform 0.5s;
+    }
+  }
+
+  &--active {
+    background-color: $green-200;
+    border-radius: 6px 6px 0 0;
+
+    &::after {
+      transform: translateY(-45%) rotateX(180deg);
+    }
+  }
 
   &:hover {
     background-color: $green-200;
     border-radius: 6px 6px 0 0;
 
     &::after {
-      transform: scale(1, -1);
-      transition: transform 0.3s;
+      transform: translateY(-45%) rotateX(180deg);
+      transition: transform 0.5s;
     }
-  }
-
-  &:hover>&__items {
-    display: block;
-    top: 49px;
-    transform: scaleY(1);
-    transform-origin: 100% 0;
-    opacity: 1;
-    transition: transform 0.4s ease-in-out;
   }
 
 
@@ -143,17 +348,6 @@
     height: 17px;
     left: 18px;
     bottom: 17px;
-  }
-
-  &::after {
-    content: '';
-    background-image: url('../images/icons/arrow-down.svg');
-    width: 7px;
-    height: 4px;
-    position: absolute;
-    right: 18px;
-    top: 50%;
-    transform: translateY(-45%);
   }
 
   &__items {
@@ -170,6 +364,16 @@
     opacity: 0.7;
     transform-origin: 0 0;
     transition: transform 0.3s ease-in-out, opacity 0.3s, transform-origin 0.3s;
+
+    &--active {
+      display: block;
+      top: 49px;
+      transform: scaleY(1);
+      transform-origin: 100% 0;
+      opacity: 1;
+      transition: transform 0.4s ease-in-out;
+    }
+
   }
 
   &__link {
@@ -194,17 +398,33 @@
   max-width: 576px;
   width: 100%;
   display: flex;
-  position: relative;
+  justify-content: space-between;
 
-  &::after {
-    content: '';
+  @include r($xga) {
+    width: 70%;
+  }
+
+  @include r($md) {
     position: absolute;
-    background-image: url('../images/icons/search.svg');
-    top: 50%;
-    transform: translateY(-50%);
-    left: 12px;
-    width: 20px;
-    height: 20px;
+    border: 1px solid $dark-800;
+    margin: 0 -15px;
+    width: 100%;
+    top: 100%;
+    z-index: 1;
+    transform: scaleY(0);
+    opacity: 0.7;
+    transform-origin: 0 0;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out, transform-origin 0.3s ease-out;
+  }
+
+  &--active {
+    @include r($md) {
+      top: 112px;
+      transform: scaleY(1);
+      transform-origin: 100% 0;
+      opacity: 1;
+      transition: transform 0.3s ease-out, opacity 0.3s ease-out, transform-origin 0.3s ease-out;
+    }
   }
 
   &__input {
@@ -215,6 +435,13 @@
     width: 100%;
     font-size: 14px;
     border-radius: 6px 0 0 6px;
+    background-image: url('../images/icons/search.svg');
+    background-repeat: no-repeat;
+    background-position: 12px center;
+
+    @include r($md) {
+      border-radius: 0;
+    }
   }
 
   &__btn {
@@ -227,6 +454,15 @@
     font-weight: 600;
     color: $white;
     letter-spacing: 0.03em;
+
+    @include r($xga) {
+      padding: 15px 35px;
+    }
+
+    @include r($md) {
+      border-radius: 0;
+      padding: 15px 26px;
+    }
 
     &:focus {
       box-shadow: 0 0 0 4px rgba($white, 0.5)
@@ -243,35 +479,58 @@
   display: flex;
   align-content: center;
 
-  &__list {
+  &__item {
     width: 50px;
     height: 50px;
     border-radius: 3px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
+    position: relative;
     transition: background-color 0.3s;
+
+    &--search {
+      display: none;
+
+      @include r($md) {
+        display: block;
+      }
+    }
+
+    &--login {
+      @include r($xl) {
+        display: none;
+      }
+    }
+
+    &--favorites {
+      @include r($xl) {
+        display: none;
+      }
+    }
+
+    &:not(:last-child) {
+      margin-right: 12px;
+
+      @include r($xga) {
+        margin-right: 8px;
+      }
+    }
 
     &:hover {
       background-color: rgba($white, 0.1);
+    }
 
+    @include r($xga) {
+      width: 44px;
+      height: 44px;
     }
   }
 
-  &__list {
-    &:not(:last-child) {
-      margin-right: 12px;
-    }
-  }
-
-  &__link {
-    position: relative;
-  }
-
-  &__list &__num {
+  &__num {
     position: absolute;
-    left: -6px;
-    top: -7px;
+    left: 3px;
+    top: 3px;
     width: 18px;
     height: 18px;
     border-radius: 50%;
@@ -287,24 +546,44 @@
   position: fixed;
   top: 0;
   right: 0;
-  max-width: 475px;
+  max-width: 495px;
   transform: translateX(105%);
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-out;
   width: 100%;
   background-color: $white;
   z-index: 999;
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
 
+  @include r($ml) {
+    top: 120px;
+    height: calc(100vh - 120px);
+    font-size: 14px;
+  }
+
+  @include r($md) {
+    top: 114px;
+    height: calc(100vh - 114px);
+  }
+
+  @include l($ml) {
+    top: 0;
+    height: 100vh;
+  }
+
   &--active {
     transform: translateX(0);
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s ease-out;
   }
 
   &__top {
     padding: 19px 26px 12px 24px;
     position: relative;
+
+    @include l($ml) {
+      padding: 10px 25px;
+    }
   }
 
   &__title {
@@ -325,86 +604,18 @@
     transform: translateY(-50%);
   }
 
-  &__content {
+  &__items {
     flex-grow: 1;
-    flex-basis: 0;
     background-color: $silver-100;
     padding: 12px;
     border: 1px solid rgba($silver-600, 0.3);
+    overflow: auto;
   }
 
-  &__product {
-    background-color: $white;
-    padding: 12px;
-    display: flex;
-    border: 1px solid $silver-600;
-    border-radius: 3px;
-    font-weight: 600;
-    position: relative;
-
+  &__item {
     &:not(:last-child) {
       margin-bottom: 12px;
     }
-  }
-
-  &__delete {
-    width: 12px;
-    height: 12px;
-    position: absolute;
-    right: 12px;
-    top: 12px;
-  }
-
-  &__name {
-    font-size: 14px;
-    margin-bottom: 5px;
-  }
-
-  &__price {
-    font-size: 20px;
-    line-height: 1;
-
-  }
-
-  &__img {
-    margin-right: 32px;
-    align-self: center;
-  }
-
-  &__info {
-    max-width: 170px;
-    width: 100%;
-    margin-right: 12px;
-  }
-
-  &__count {
-    display: flex;
-    justify-content: center;
-    align-self: end;
-    margin-right: 12px;
-  }
-
-  &__bt-minus,
-  &__bt-plus {
-    color: $white;
-    height: 24px;
-    width: 24px;
-    border-radius: 0;
-    background-color: $green-900;
-    cursor: pointer;
-  }
-
-  &__quantity {
-    background-color: rgba($green-900, 0.1);
-    text-align: center;
-    height: 24px;
-    border-radius: 0;
-    width: 36px;
-
-  }
-
-  &__product-price {
-    align-self: flex-end;
   }
 
   &__total {
@@ -414,12 +625,26 @@
     justify-content: space-between;
     font-size: 24px;
     line-height: 1.2;
+
+    @include r($md) {
+      padding: 18px 15px;
+      font-size: 14px;
+    }
+
+    @include l($ml) {
+      padding: 14px 15px;
+      font-size: 14px;
+    }
   }
 
   &__total-price {
     font-size: 24px;
     line-height: 1;
     font-weight: 600;
+
+    @include r($md) {
+      font-size: 18px;
+    }
   }
 
   &__btn {
@@ -427,43 +652,121 @@
     padding: 22px 0;
     border-radius: 0;
     font-size: 18px;
+    text-align: center;
+
+    @include r($md) {
+      padding: 12px 0;
+    }
+
+    @include l($ml) {
+      padding: 12px 0;
+    }
   }
 }
 
 .promo-slider {
   letter-spacing: 0;
 
+  &__item {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
   &__wrapper {
     display: flex;
     height: 600px;
+
+    @include r($xl) {
+      height: 375px;
+    }
+
+    @include r($md) {
+      height: 320px;
+    }
+
+    @include l($ml) {
+      height: 100vh;
+    }
   }
 
   &__box {
-    width: 1290px;
+    width: 100%;
     padding: 24px;
     background-color: rgba($white, 0.8);
     border-radius: 6px;
-    margin: auto 0;
-  }
+    margin: auto;
 
+    @include r($xga) {
+      width: 80%;
+    }
+
+    @include r($xl) {
+      width: 100vw;
+      margin: auto calc(50% - 50vw);
+      border-radius: 0;
+      padding: 15px;
+    }
+  }
 
   &__title {
     max-width: 800px;
-    font-size: 60px;
-    line-height: 1.3;
     text-transform: uppercase;
     @extend %ruda;
     font-weight: 900;
     margin-bottom: 6px;
+    @include line-clamp(60, 1.3, 3);
 
     & span {
       color: $red-900;
+      @include line-clamp(60, 1.3, 1);
+
+      @include r($xl) {
+        font-size: 30px;
+      }
+
+      @include r($md) {
+        font-size: 20px;
+      }
+
+    }
+
+    @include r($xga) {
+      @include line-clamp(50, 1.3, 3);
+    }
+
+    @include r($xl) {
+      margin-bottom: 15px;
+      max-width: 400px;
+      font-size: 30px;
+    }
+
+    @include r($md) {
+      font-size: 20px;
+    }
+  }
+
+  &__btn {
+    letter-spacing: 0.03em;
+
+    @include r($xl) {
+      font-size: 14px;
     }
   }
 
   &__text {
-    font-size: 16px;
     margin-bottom: 35px;
+    @include line-clamp(16, 1.4, 1);
+
+    @include r($xl) {
+      @include line-clamp(16, 1.4, 2);
+      margin-bottom: 24px;
+
+      @include r($md) {
+        @include line-clamp(16, 1.4, 2);
+        margin-bottom: 24px;
+      }
+    }
   }
 
   &__slick-prev,
@@ -479,6 +782,10 @@
     justify-content: center;
     align-items: center;
     transform: translateY(-52%);
+
+    @include r($xl) {
+      z-index: -100;
+    }
 
     &:focus {
       fill: black;
@@ -499,10 +806,59 @@
 
   &__slick-next {
     right: 60px;
+
+    @include r($xga) {
+      right: 20px;
+    }
   }
 
   &__slick-prev {
     left: 60px;
+
+    @include r($xga) {
+      left: 20px;
+    }
+  }
+}
+
+.slick-dots {
+  display: none;
+  justify-content: center;
+  position: absolute;
+  bottom: 25px;
+  left: 0;
+  right: 0;
+
+  @include r($xl) {
+    display: flex;
+  }
+
+  @include r($md) {
+    bottom: 16px;
+  }
+
+  & li {
+
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+
+    & button {
+      padding: 0;
+      font-size: 0;
+      background-color: $white;
+      width: 10px;
+      height: 10px;
+      border: 1px solid $silver-600;
+      border-radius: 50%;
+    }
+  }
+
+  & .slick-active {
+    & button {
+      background-color: $green-900;
+      border: 1px solid $green-900;
+    }
   }
 }
 
@@ -511,64 +867,91 @@
   padding: 48px 0 30px;
   letter-spacing: 0;
 
+  @include r($xga) {
+    display: flex;
+  }
+
+  @include r($xl) {
+    padding: 31px 0;
+  }
+
   &__items {
     display: flex;
     justify-content: center;
     padding-left: 20px;
+
+    @include r($xl) {
+      display: block;
+      flex-direction: column;
+      align-items: flex-end;
+      padding-left: 74px;
+    }
   }
 
   &__item {
     max-width: 190px;
     position: relative;
 
+    @include r($xl) {
+      max-width: 330px;
+    }
+
     &:not(:last-child) {
       margin-right: 140px;
+
+      @include r($xl) {
+        margin-bottom: 31px;
+        margin-right: 0;
+      }
     }
 
-    &--scooter::after,
-    &--return::after,
-    &--support::after {
-      content: '';
-      position: absolute;
-      width: 50px;
-      height: 50px;
-      left: -74px;
-      top: 0;
+    &--scooter,
+    &--return,
+    &--support {
+      &::after {
+        content: '';
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        left: -74px;
+        top: 0;
+      }
+
     }
 
-    &--scooter::after {
-      background-image: url('../images/icons/scooter.svg');
-      height: 43px;
+    &--scooter {
+      &::after {
+        background-image: url('../images/icons/scooter.svg');
+        height: 43px;
+      }
     }
 
-    &--return::after {
-      background-image: url('../images/icons/return.svg');
+    &--return {
+      &::after {
+        background-image: url('../images/icons/return.svg');
+      }
     }
 
-    &--support::after {
-      background-image: url('../images/icons/support.svg');
+    &--support {
+      &::after {
+        background-image: url('../images/icons/support.svg');
+      }
     }
-
   }
 
   &__title {
     margin-bottom: 7px;
-    font-size: 16px;
     @extend %opensans;
     font-weight: 600;
+    @include line-clamp(16, 1.4, 1);
+  }
+
+  &__text {
+    @include line-clamp(14, 1.4, 2);
   }
 }
 
-.title {
-  font-size: 32px;
-  @extend %ruda;
-  font-weight: 600;
-  // letter-spacing: 0.03em;
-  display: block;
-  text-align: center;
-  text-transform: uppercase;
-  margin-bottom: 30px;
-}
+
 
 .best-products {
   text-align: center;
@@ -578,6 +961,25 @@
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 30px;
     margin-bottom: 47px;
+
+    @include r($xga) {
+      grid-template-columns: repeat(4, minmax(130px, 1fr));
+      grid-gap: 15px;
+      margin-bottom: 24px;
+    }
+
+    @include r($md) {
+      grid-template-columns: repeat(2, minmax(130px, 1fr));
+      grid-gap: 5px;
+      margin-bottom: 24px;
+    }
+
+    @include l($xl) {
+      grid-template-columns: repeat(4, minmax(130px, 1fr));
+      grid-gap: 5px;
+      margin-bottom: 24px;
+    }
+
   }
 
   &__add {
@@ -603,26 +1005,32 @@
   display: flex;
   justify-content: center;
   margin-bottom: 49px;
-  display: flex;
   font-size: 15px;
   @extend %opensans;
   font-weight: 700;
 
+  @include r($md) {
+    flex-wrap: wrap;
+    gap: 15px 31px;
+  }
+
+  @include r($ml) {
+    font-size: 14px;
+  }
 
   &__filter {
-
     &:not(:last-child) {
       margin-right: 24px;
+
+      @include r($md) {
+        margin-right: 0;
+      }
     }
   }
 
   &__btn {
     text-transform: uppercase;
     transition: border-bottom-width 0.3s;
-
-    &--ls {
-      letter-spacing: 0.1em;
-    }
 
     &:hover {
       border-bottom: 3px solid $green-200;
@@ -647,6 +1055,183 @@
   &--min {
     display: flex;
     padding: 11px;
+
+    @include r($ml) {
+      margin: 0 auto;
+    }
+
+    .product-card {
+      &__img {
+        margin: 0;
+        margin-right: 12px;
+        align-self: center;
+        width: 60px;
+        height: 60px;
+
+        @include r($xl) {
+          width: 100px;
+          height: 100px;
+        }
+      }
+
+      &__title {
+        width: 164px;
+        min-height: 58px;
+        margin-bottom: 7px;
+        padding: 0;
+      }
+
+      &__offers {
+        flex-direction: row;
+        align-items: baseline;
+        font-size: 12px;
+        max-width: 119px;
+        width: 100%;
+        margin-right: 3px;
+      }
+
+      &__info {
+        display: block;
+        padding: 0;
+      }
+
+      &__price {
+        font-size: 20px;
+        font-weight: 600;
+        margin-right: 15px;
+
+        &--old {
+          margin-bottom: 0;
+        }
+
+        &::after {
+          content: "₽";
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+
+  &--cart {
+    max-width: 472px;
+    max-height: 84px;
+    display: flex;
+    padding: 11px;
+    width: 100%;
+    border-radius: 3px;
+    justify-content: space-between;
+
+    @include r($xl) {
+      display: flex;
+      flex-direction: column;
+      min-height: 126px;
+    }
+
+    &:hover {
+      border: 1px solid transparent;
+    }
+
+    .product-card {
+
+      &__delete {
+        width: 12px;
+        height: 12px;
+        position: absolute;
+        right: 12px;
+        top: 12px;
+      }
+
+      &__title {
+        padding: 0;
+        margin-bottom: 5px;
+        min-height: 0;
+        @include line-clamp(14, 1.4, 2)
+      }
+
+      &__price {
+        font-size: 20px;
+        line-height: 1;
+      }
+
+      &__img {
+        align-self: center;
+        margin: 0;
+        margin-right: 32px;
+
+        @include r($xl) {
+          width: 60px;
+          height: 60px;
+        }
+
+        @include r($md) {
+          margin-right: 12px;
+        }
+      }
+
+      &__info {
+        padding: 0;
+        margin-right: 32px;
+        display: flex;
+        align-items: center;
+
+        @include r($xl) {
+          margin-right: 0;
+        }
+      }
+
+      &__offers {
+        padding: 0;
+        min-width: 170px;
+        width: 100%;
+        display: block;
+      }
+
+      &__total {
+        display: flex;
+        align-items: flex-end;
+
+        @include r($xl) {
+          justify-content: space-between;
+        }
+      }
+
+      &__count {
+        display: flex;
+        justify-content: center;
+        align-self: end;
+        margin-right: 12px;
+
+        @include r($xl) {
+          margin-right: 0;
+          align-self: center;
+        }
+      }
+
+      &__bt-minus,
+      &__bt-plus {
+        color: $white;
+        height: 24px;
+        width: 24px;
+        border-radius: 0;
+        background-color: $green-900;
+        cursor: pointer;
+      }
+
+      &__quantity {
+        background-color: rgba($green-900, 0.1);
+        text-align: center;
+        height: 24px;
+        border-radius: 0;
+        width: 36px;
+
+      }
+
+      &__product-price {
+        align-self: flex-end;
+        font-size: 20px;
+      }
+    }
   }
 
   &:hover {
@@ -708,28 +1293,30 @@
 
   &__img {
     margin-bottom: 18px;
+    object-fit: cover;
 
-    &--min {
-      margin: 0;
-      margin-right: 12px;
-      align-self: center;
+    @include r($xga) {
+      max-width: 100%;
+      height: auto;
     }
   }
 
   &__title {
     @extend %opensans;
-    letter-spacing: 0.03em;
-    font-size: 14px;
     font-weight: 600;
     padding: 0 17px;
     margin-bottom: 9px;
     min-height: 60px;
+    @include line-clamp(14, 1.4, 3);
 
-    &--min {
-      width: 164px;
-      min-height: 58px;
-      margin-bottom: 7px;
-      padding: 0;
+    @include r($se) {
+      min-height: 48px;
+      font-size: 12px;
+    }
+
+    @include l($md) {
+      @include line-clamp(12, 1.4, 3);
+      min-height: 48px;
     }
   }
 
@@ -738,11 +1325,6 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-
-    &--min {
-      display: block;
-      padding: 0;
-    }
   }
 
   &__status {
@@ -768,30 +1350,9 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-
-    &--min {
-      flex-direction: row;
-      align-items: baseline;
-      font-size: 12px;
-      max-width: 119px;
-      width: 100%;
-      margin-right: 3px;
-    }
   }
 
   &__price {
-    &--min {
-      font-size: 20px;
-      font-weight: 600;
-      margin-right: 15px;
-
-      &::after {
-        content: "₽";
-        font-size: 14px;
-      }
-
-      //Это для уменьшения ₽ в цене, для маленькой карточки товара, сперва делал через добавление в html <small>₽</small>, и потом в css & small {font-size: 14px;}, по другому не нашел как это реализовать
-    }
 
     &--old {
       margin-bottom: 3px;
@@ -807,10 +1368,6 @@
         left: 0;
         transform: rotate(-13.99deg);
       }
-    }
-
-    &--min-old {
-      margin-bottom: 0;
     }
   }
 
@@ -867,6 +1424,21 @@
     grid-template-columns: 630px 1fr 1fr;
     grid-gap: 30px;
 
+    @include r($xga) {
+      grid-template-columns: 430px 1fr 1fr;
+      grid-gap: 20px;
+    }
+
+    @include r($xl) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 15px;
+    }
+
+    @include r($md) {
+      grid-template-columns: 1fr;
+      grid-template-row: repeat(3, 1fr);
+      grid-gap: 15px;
+    }
   }
 
   &__item {
@@ -875,39 +1447,58 @@
     border-radius: 6px;
     padding: 77px 33px 82px;
 
+    @include r(xga) {
+      padding: 65px 30px 70px;
+    }
+
+    @include r($xl) {
+      padding: 77px 30px 31px;
+    }
+
     &--fruits {
       color: $white;
       text-shadow: 1px 1px 0 rgba($black, 0.25);
+
+      @include r($xl) {
+        grid-column: 1 / 3;
+      }
+
+      @include r($md) {
+        grid-column: 1 / 1;
+      }
     }
   }
 
-  &__title,
-  &__link {
-    line-height: 1;
-  }
-
   &__title {
-    font-size: 12px;
     letter-spacing: 0.1em;
     margin-bottom: 16px;
-
+    @include line-clamp(12, 1, 1);
   }
 
   &__subtitle {
     max-width: 160px;
-    font-size: 30px;
     margin-bottom: 9px;
     @extend %ruda;
     font-weight: 600;
+    @include line-clamp(30, 1.4, 2);
+
+    @include r($xl) {
+      margin-bottom: 77px;
+    }
 
     &--fruits {
       max-width: 352px;
       text-shadow: 2px 2px 0 rgba($black, 0.25);
-      //поставил цвет $black, хотя в фигме $white. но визуально видно, что он не правильный
+
+      @include r($xl) {
+        max-width: 275px;
+        font-size: 24px;
+      }
     }
   }
 
   &__link {
+    line-height: 1;
     border-bottom: 2px solid $dark-500;
     padding-bottom: 4px;
     transition: opacity 0.3s;
@@ -928,13 +1519,63 @@
   background-color: $silver-100;
   padding: 72px 0;
 
+  &__product-filters {
+    letter-spacing: 0.1em;
+  }
+
   &__list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 30px;
     margin-bottom: 47px;
+
+    @include r($xga) {
+      grid-template-columns: repeat(3, 300px);
+      grid-gap: 25px;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    @include r($xl) {
+      grid-template-columns: repeat(2, 300px);
+      grid-gap: 25px;
+    }
+
+    @include r($md) {
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    @include l($xl) {
+      grid-template-columns: repeat(2, 300px);
+      margin-bottom: 24px;
+      justify-content: center;
+      grid-gap: 15px;
+    }
+
+    @include l($md) {
+      margin-bottom: 24px;
+      display: block;
+      grid-gap: 10px;
+    }
   }
 
+  &__item {
+    &:not(:last-child) {
+      @include r($ml) {
+        margin-bottom: 15px;
+      }
+
+      @include l($xl) {
+        margin-bottom: 0;
+      }
+
+      @include l($md) {
+        margin-bottom: 15px;
+      }
+
+    }
+  }
 }
 
 .partners {
@@ -943,24 +1584,35 @@
   &__items {
     padding: 0 55px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-  }
 
-  &__item--pepper {
-    align-self: baseline;
+    @include r($xga) {
+      padding: 0;
+      display: block;
+      margin: 0 -15px;
+    }
   }
 
   &__link {
     opacity: 0.5;
     transition: opacity 0.3s;
+    display: block;
+    text-align: center;
 
     &:hover {
       opacity: 1;
     }
-
   }
+}
 
+.slick-center {
+  .partners__item {
+    .partners__link {
+      opacity: 1;
+      //  допускается ли в данном случае подобная запись?
+    }
+  }
 }
 
 .shope-news {
@@ -969,11 +1621,20 @@
     justify-content: space-between;
     text-transform: uppercase;
     margin-bottom: 30px;
+
+    @include r($xga) {
+      display: block;
+      margin-bottom: 24px;
+    }
   }
 
   &__title {
     margin-bottom: 0;
 
+    @include r($xga) {
+      text-align: left;
+      margin-bottom: 12px;
+    }
   }
 
   &__link {
@@ -997,27 +1658,61 @@
   &__items {
     display: flex;
     justify-content: space-between;
+
+    @include r($xga) {
+      flex-direction: column;
+      justify-content: center;
+    }
   }
 
   &__item {
-    box-shadow: 0 3px 3px rgba($black, 0.25);
-    border-radius: 6px;
-    max-width: 410px;
-    position: relative;
+    @include r($xga) {
+      margin: 0 auto;
+    }
+
+    &:not(:last-child) {
+      @include r($xga) {
+        margin-bottom: 14px;
+      }
+    }
+  }
+}
+
+.news-card {
+  box-shadow: 0 3px 3px rgba($black, 0.25);
+  border-radius: 6px;
+  max-width: 410px;
+  position: relative;
+  padding-bottom: 18px;
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: 0 6px 6px rgba($black, 0.25);
   }
 
   &__img {
     border-radius: 6px 6px 0 0;
+    object-fit: cover;
+    margin-bottom: 18px;
   }
 
-  &__info {
-    padding: 18px;
-    display: block;
-    font-size: 16px;
+  &__text {
+    padding: 0 18px;
+    min-height: 72px;
     font-weight: 600;
-    line-height: 1.5;
     letter-spacing: 0;
     transition: color 0.3s;
+    @include line-clamp(16, 1.5, 3);
+
+    @include r($ml) {
+      font-size: 14px;
+      min-height: 0;
+      max-width: 350px;
+    }
+
+    @include r($se) {
+      max-width: 290px;
+    }
 
     &:hover {
       color: $green-900;
@@ -1065,25 +1760,44 @@
     display: flex;
     align-items: flex-start;
     margin-bottom: 30px;
-    padding-top: 28px;
+    padding-top: 30px;
+
+    @include r($xl) {
+      padding-top: 25px;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
   }
 
   &__middle {
     display: flex;
-    justify-content: space-between;
     padding-bottom: 30px;
     position: relative;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    @include r($xl) {
+      padding-bottom: 0;
+      flex-direction: column-reverse;
+      align-items: center;
+    }
 
     &::after {
       content: '';
-      position: absolute;
       border-bottom: 1px solid $white;
+      position: absolute;
       opacity: 0.1;
       bottom: 0;
+      width: 100vw;
       left: 50%;
-      width: calc(100vw - 19px);
-      transform: translate(-50%, -50%);
+      right: 50%;
+      margin: 0 -50vw;
+
+      @include r($xl) {
+        opacity: 0.0;
+      }
     }
+
   }
 
   &__bottom {
@@ -1091,20 +1805,90 @@
     justify-content: space-between;
     padding: 24px 0;
     align-items: center;
+
+    @include r($xl) {
+      flex-direction: column-reverse;
+    }
+  }
+
+  &__connection,
+  &__menu,
+  &__sub {
+    position: relative;
+
+    @include r($xl) {
+      padding-bottom: 24px;
+      margin-bottom: 20px;
+    }
+
+    &::after {
+      border-bottom: 1px solid $white;
+      position: absolute;
+      opacity: 0.1;
+      bottom: 0;
+      width: 100vw;
+      // transform: translate(-50%, -50%);
+      left: 50%;
+      right: 50%;
+      margin: 0 -50vw;
+
+      @include r($xl) {
+        content: '';
+      }
+    }
+  }
+
+  &__sub {
+    @include r($xl) {
+      margin-bottom: 0;
+    }
   }
 
   &__menu {
-    max-width: 467px;
-    width: 100%;
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-rows: repeat(3, 20px);
-    grid-row-gap: 18px;
-    justify-content: space-between;
+    padding-left: 71px;
+
+    @include r($xga) {
+      padding-left: 30px;
+    }
+
+    @include r($ml) {
+
+      padding-left: 36px;
+    }
+
+    @include r($se) {
+      padding-left: 0;
+    }
+
+    @include l($xl) {
+      padding-left: 71px;
+      margin: 0 auto 24px;
+    }
+  }
+
+  &__item {
+    margin-bottom: 18px;
+  }
+
+  &__link {
+    transition: opacity 0.2s;
+    margin-bottom: 18px;
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
 
   &__payment {
-    & svg:not(:last-child) {
+    display: flex;
+
+    @include r($xl) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__system {
+    &:not(:last-child) {
       margin-right: 20px;
     }
   }
@@ -1114,29 +1898,31 @@
   max-width: 306px;
   width: 100%;
   display: flex;
-  flex-direction: column;
-  position: relative;
+  flex-wrap: wrap;
   line-height: 1;
 
   &__label {
     color: $white;
     margin-bottom: 18px;
+    padding-bottom: 0;
   }
 
   &__input {
+    max-width: 181px;
     width: 100%;
     padding: 12px;
     background-color: $white;
     height: 40px;
-    border-radius: 6px;
-    width: 100%;
+    border-radius: 6px 0 0 6px;
+
+    @include r($se) {
+      max-width: 160px;
+    }
   }
 
   &__btn {
-    position: absolute;
-    right: 0;
-    bottom: 39px;
-    padding: 12px 14px;
+    height: 40px;
+    padding: 0 16px;
     line-height: 1.4;
     border-radius: 0 6px 6px 0;
     @extend %opensans;
@@ -1144,39 +1930,165 @@
     color: $white;
     font-size: 12px;
     text-transform: uppercase;
+
+    @include r($se) {
+      padding: 0 12px;
+    }
+  }
+}
+
+.menu {
+  columns: 3;
+  column-gap: 77px;
+
+  @include r($xga) {
+    columns: 2;
+    column-gap: 50px;
+  }
+
+  @include r($ml) {
+    columns: 2;
+    column-gap: 45px;
+  }
+
+  @include r($se) {
+    columns: 1;
+    column-gap: 0;
+  }
+
+  @include l($ml) {
+    columns: 2;
+    column-gap: 70px;
+  }
+
+  &--mobile {
+    columns: 1;
+    padding-top: 17px;
+    margin-right: 0;
+
+    .menu {
+
+      &__item {
+        font-size: 18px;
+        line-height: 1.2;
+
+        &:not(:last-child) {
+          margin-bottom: 0;
+        }
+      }
+
+      &__link {
+        padding: 15px;
+        display: block;
+
+        @include r($md) {
+          padding: 10px;
+        }
+
+        @include l($xl) {
+          padding: 10px;
+        }
+      }
+    }
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 19px;
+    }
+  }
+
+  &__link {
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
 }
 
 .connection {
-  &__list {
-    margin-bottom: 17px;
+  &--mobile {
+    .connection {
+      &__list {
+        padding-top: 26px;
+        font-size: 18px;
+        margin-bottom: 9px;
 
-    a {
-      margin-bottom: 18px;
-      display: block;
-      transition: color 0.3s;
+        & a {
+          &:not(:last-child) {
+            margin-bottom: 0;
+          }
+        }
+      }
 
-      &:hover {
-        color: $green-900;
+      &__tel,
+      &__address {
+        position: relative;
+        padding: 9px 0 9px 54px;
+        line-height: 1;
+        display: block;
+
+        &::after {
+          content: '';
+          position: absolute;
+          background-image: url('../images/icons/icon-tel.svg');
+          width: 24px;
+          height: 24px;
+          left: 15px;
+          top: 0;
+          bottom: 0;
+          margin: auto 0;
+        }
+      }
+
+      &__address {
+        line-height: 1.2;
+
+        &::after {
+          background-image: url('../images/icons/loc.svg');
+          height: 32px;
+        }
       }
     }
   }
 
-  .social {
-    display: flex;
+  &__list {
+    margin-bottom: 19px;
 
-    &__list {
+    & a {
+      display: block;
+      transition: color 0.3s;
+
       &:not(:last-child) {
-        margin-right: 10px;
+        margin-bottom: 18px;
       }
     }
+  }
 
-    &__link {
-      transition: opacity 0.3s;
+  &:hover {
+    color: $green-900;
+  }
+}
 
-      &:hover {
-        opacity: 0.7;
-      }
+.social {
+  display: flex;
+
+  @include r($xl) {
+    justify-content: center;
+  }
+
+  &__list {
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+
+  &__link {
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.7;
     }
   }
 }
