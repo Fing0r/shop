@@ -11,7 +11,8 @@ const fileInclude   = require('gulp-file-include');
 
 
 const htmlInclude = () => {
-  return src('app/html/**/*.html')
+  // return src('app/html/**/*.html')
+  return src(['app/html/*.html'])
     .pipe(fileInclude({
         prefix: '@',
         basepath: '@file',
@@ -45,6 +46,8 @@ function scripts() {
     'node_modules/jquery/dist/jquery.js',
     'node_modules/slick-carousel/slick/slick.js',
     'node_modules/mixitup/dist/mixitup.js',
+    'node_modules/ion-rangeslider/js/ion.rangeSlider.js',
+    'node_modules/jquery-form-styler/dist/jquery.formstyler.js',
     'app/js/main.js'
   ])
     .pipe(concat('main.min.js'))
@@ -87,6 +90,7 @@ function watching() {
   watch(['app/js/**/*.js', '!app/js/main.min.js'], scripts);
   watch(['app/**/*.html']).on('change', browserSync.reload);
   watch(['app/html/**/*.html'], htmlInclude);
+  watch(['app/scss/**/*.scss']).on('change', browserSync.reload);
 }
 
 exports.htmlInclude = htmlInclude;

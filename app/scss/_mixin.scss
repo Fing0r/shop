@@ -16,13 +16,6 @@
   -webkit-line-clamp: $lines-to-show;
 }
 
-
-$xga: 1024;
-$xl: 992;
-$ml: 768;
-$md: 568;
-$se: 360;
-
 @mixin r($width) {
   @media only screen and (max-width: $width + "px") {
     @content;

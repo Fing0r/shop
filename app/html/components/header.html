@@ -5,7 +5,7 @@
   <nav class="header__top">
     <div class="container">
       <div class="header__wrapper">
-        <button class="mobile__btn" type="button" aria-label="Мобильное меню">
+        <button class="mobile-btn" type="button" aria-label="Мобильное меню">
           <span></span>
         </button>
         <ul class="header__contacts contacts">
@@ -59,7 +59,7 @@
       <img class="logo__img" src="images/logo-mobile_menu.svg" width="200" height="60" alt="логотип">
     </a>
     <a class="menu-mobile__user" href="#">Вход | Регистрация</a>
-    <a href="" class="menu-mobile__catalog">Каталог товаров</a>
+    <a class="menu-mobile__catalog" href="#">Каталог товаров</a>
     <address class="connection connection--mobile">
       <div class="connection__list">
         <a class="connection__tel" href="tel:+7907288365">
@@ -161,12 +161,12 @@
     <div class="container">
       <div class="header__inner">
         <a class="header__logo logo" href="#">
-          <img class="logo__img" src="images/logo.svg" width="200" height="60" alt="логотип">
+          <picture class="logo__img">
+            <source srcset="images/logo-mobile.svg" width="37" height="40" media="(max-width: 1024px)">
+            <img class="logo__img" src="images/logo.svg" width="200" height="60" alt="логотип">
+          </picture>
         </a>
-        <a class="header__logo-mobile logo-mobile" href="#">
-          <img class="logo__img" src="images/logo-mobile.svg" width="37" height="40" alt="логотип">
-        </a>
-        <button class="header__catalog catalog catalog--inactive" type="button">
+        <div class="header__catalog catalog catalog--inactive">
           Каталог продуктов
           <ul class="catalog__items">
             <li class="catalog__item">
@@ -230,7 +230,7 @@
               </a>
             </li>
           </ul>
-        </button>
+        </div>
         <form class="header__search search">
           <label class="visually-hidden" for="search">Найти в магазине ...</label>
           <input class="search__input" id="search" type="search" placeholder="Найти в магазине ..." name="search"
