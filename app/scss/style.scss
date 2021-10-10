@@ -966,8 +966,6 @@
   }
 }
 
-
-
 .best-products {
   text-align: center;
 
@@ -1079,6 +1077,7 @@
         margin: 0;
         margin-right: 14px;
         align-self: center;
+        height: auto;
       }
 
       &__title {
@@ -1086,6 +1085,10 @@
         min-height: 58px;
         margin-bottom: 6px;
         padding: 0;
+
+        @include r($se) {
+          width: 154px;
+        }
       }
 
       &__info {
@@ -1115,8 +1118,16 @@
         font-size: 20px;
         font-weight: 600;
 
+        @include r($se) {
+          font-size: 16px;
+        }
+
         &--new {
           margin-right: 12px;
+
+          @include r($se) {
+            margin-right: 6px;
+          }
 
           &::after {
             content: "₽";
@@ -1127,6 +1138,10 @@
         &--old {
           font-size: 12px;
           margin-bottom: 0;
+
+          @include r($se) {
+            font-size: 11px;
+          }
         }
       }
 
@@ -1476,9 +1491,17 @@
     margin-bottom: 18px;
     object-fit: cover;
 
+    @include r($xga) {
+      height: 150px;
+    }
+
     @include r($md) {
       max-width: 100%;
       height: auto;
+    }
+
+    @include r($xl) {
+      height: 110px;
     }
   }
 
@@ -1560,8 +1583,6 @@
     background-size: cover;
     background-repeat: no-repeat;
   }
-
-
 
   &__rating {
     line-height: 1;
@@ -2118,10 +2139,6 @@
     column-gap: 45px;
   }
 
-  @include r($ml) {
-    columns: 3;
-  }
-
   @include r($md) {
     columns: 2;
   }
@@ -2326,7 +2343,6 @@
     }
   }
 
-
   &__filters {
 
     margin-right: 30px;
@@ -2340,14 +2356,14 @@
       background-color: white;
       top: 0;
       left: 0;
-      padding: 76px 21px 50px 3px;
+      padding: 76px 21px 50px 0;
       padding-right: 21px;
       padding-top: 76px;
       overflow-y: scroll;
       border: 1px solid $silver-600;
       overflow-y: auto;
       height: 100vh;
-      transition: transform 0.3s, opacity 0.3s;
+      transition: transform 0.3s;
 
       &::-webkit-scrollbar {
         width: 4px;
@@ -2366,7 +2382,7 @@
 
     &--active {
       transform: translateX(0%);
-      transition: transform 0.3s, opacity 0.3s;
+      transition: transform 0.3s;
     }
   }
 
@@ -2425,7 +2441,6 @@
       }
     }
 
-
     &:hover {
       border: 1px solid $dark-500;
     }
@@ -2441,14 +2456,13 @@
     transform: scaleY(1);
     transform-origin: 100% 0;
     opacity: 1;
-    transition: transform 0.4s ease-in-out,
-      padding 0.3s, max-height 0.3s;
+    transition: transform 0.4s ease-in-out, padding 0.3s, max-height 0.3s, opacity 0.3s, transform-origin 0.3s;
 
     &--active {
       transform: scaleY(0);
       opacity: 0.7;
       transform-origin: 0 0;
-      transition: transform 0.3s ease-in-out, opacity 0.3s, transform-origin 0.3spadding 0.3s, max-height 0.3s;
+      transition: transform 0.3s ease-in-out, opacity 0.3s, transform-origin 0.3s, padding 0.3s, max-height 0.3s;
       max-height: 0;
       padding: 0 18px;
     }
@@ -2560,7 +2574,8 @@
 
   &__min,
   &__max {
-    width: 80px;
+    max-width: 80px;
+    width: 100%;
     text-align: center;
     padding: 8px 12px;
     line-height: 1;
@@ -2609,7 +2624,6 @@
   border-radius: 50%;
   top: 0;
 }
-
 
 .top-filter {
   font-size: 14px;
@@ -2818,15 +2832,13 @@
   }
 }
 
-
-
 .catalog-products {
   @include r($xga) {
-    margin: 0 auto 72px auto;
+    margin: 0 auto 72px;
   }
 
   @include l($xga) {
-    margin: 0 auto 72px auto;
+    margin: 0 auto 72px;
   }
 
   &__list {
