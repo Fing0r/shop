@@ -42,10 +42,6 @@ body {
   width: 100%;
   z-index: 999;
 
-  @include r($xl) {
-    background-color: transparent;
-  }
-
   @include l($xl) {
     background-color: rgba($black, 0.6);
   }
@@ -83,6 +79,10 @@ body {
   margin-bottom: 72px;
 
   @include r($ml) {
+    margin-bottom: 48px;
+  }
+
+  @include l($xl) {
     margin-bottom: 48px;
   }
 }

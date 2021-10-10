@@ -17,7 +17,7 @@
   <nav class="header__top">
     <div class="container">
       <div class="header__wrapper">
-        <button class="mobile__btn" type="button" aria-label="Мобильное меню">
+        <button class="mobile-btn" type="button" aria-label="Мобильное меню">
           <span></span>
         </button>
         <ul class="header__contacts contacts">
@@ -71,7 +71,7 @@
       <img class="logo__img" src="images/logo-mobile_menu.svg" width="200" height="60" alt="логотип">
     </a>
     <a class="menu-mobile__user" href="#">Вход | Регистрация</a>
-    <a href="" class="menu-mobile__catalog">Каталог товаров</a>
+    <a class="menu-mobile__catalog" href="#">Каталог товаров</a>
     <address class="connection connection--mobile">
       <div class="connection__list">
         <a class="connection__tel" href="tel:+7907288365">
@@ -173,12 +173,12 @@
     <div class="container">
       <div class="header__inner">
         <a class="header__logo logo" href="#">
-          <img class="logo__img" src="images/logo.svg" width="200" height="60" alt="логотип">
+          <picture class="logo__img">
+            <source srcset="images/logo-mobile.svg" width="37" height="40" media="(max-width: 1024px)">
+            <img class="logo__img" src="images/logo.svg" width="200" height="60" alt="логотип">
+          </picture>
         </a>
-        <a class="header__logo-mobile logo-mobile" href="#">
-          <img class="logo__img" src="images/logo-mobile.svg" width="37" height="40" alt="логотип">
-        </a>
-        <button class="header__catalog catalog catalog--inactive" type="button">
+        <div class="header__catalog catalog catalog--inactive">
           Каталог продуктов
           <ul class="catalog__items">
             <li class="catalog__item">
@@ -242,7 +242,7 @@
               </a>
             </li>
           </ul>
-        </button>
+        </div>
         <form class="header__search search">
           <label class="visually-hidden" for="search">Найти в магазине ...</label>
           <input class="search__input" id="search" type="search" placeholder="Найти в магазине ..." name="search"
@@ -399,8 +399,9 @@
       <div class="footer__middle">
         <form class="footer__sub sub">
           <label class="sub__label" for="useremail">Следите за нашими акциями</label>
-          <input class="sub__input" id="useremail" type="email" placeholder="email@email.com" name="sub-useremail">
-          <button class="sub__btn  btn" type="submit" required>подписаться</button>
+          <input class="sub__input" id="useremail" type="email" placeholder="email@email.com" name="sub-useremail"
+            required>
+          <button class="sub__btn  btn" type="submit">подписаться</button>
         </form>
         <ul class="footer__menu menu">
 
@@ -409,7 +410,7 @@
               О нас
             </a>
           </li>
-          <li class="footer__item">
+          <li class="menu__item">
             <a class="menu__link" href="#">
               Контакты
             </a>
@@ -506,7 +507,7 @@
         </div>
         <ul class="footer__payment">
           <li class="footer__system">
-            <span class="visually-hidden">Мы принемаем Visa</span>
+            <span class="visually-hidden">Мы принимаем Visa</span>
             <svg width="93" height="29" viewBox="0 0 93 29" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M37.1087 0.473877L32.3987 28.0548H39.9317L44.6456 0.473877H37.1087Z" fill="white" />
               <path
@@ -558,6 +559,7 @@
   </footer>
 
   <script src="js/main.min.js"></script>
+  <script async="" src="/browser-sync/browser-sync-client.js?v=2.23.
 </body>
 
 </html>
