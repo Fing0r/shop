@@ -174,7 +174,8 @@
       <div class="header__inner">
         <a class="header__logo logo" href="#">
           <picture class="logo__img">
-            <source srcset="images/logo-mobile.svg" width="37" height="40" media="(max-width: 1024px)">
+            <source srcset="images/logo-mobile.svg" media="(max-width: 1024px)" width="37px" height="40px">
+           <!-- пытался по-разному задать размер картинке при адаптиве, но почему-то не работало у меня, задал так, но ругается валидатор -->
             <img class="logo__img" src="images/logo.svg" width="200" height="60" alt="логотип">
           </picture>
         </a>
