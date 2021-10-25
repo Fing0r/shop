@@ -8,16 +8,69 @@ const imagemin      = require('gulp-imagemin');
 const del           = require('del');
 const browserSync   = require('browser-sync').create();
 const fileInclude   = require('gulp-file-include');
+const svgSprite     = require('gulp-svg-sprite');
+const replace       = require('gulp-replace');
+const cheerio       = require('gulp-cheerio');
+const beautify      = require('gulp-beautify');
 
 
+const beautifyHtml = () => {
+  return src('app/*.html')
+    .pipe(beautify.html({ indent_size: 2 }))
+    .pipe(dest('app'))
+    .pipe(browserSync.stream())
+};
+
+const removeEmptyLines = () => {
+    return src('app/*.html')
+
+        .pipe(replace(/^\s*\n/mg, ''))
+
+        .pipe(dest('app'))
+
+        .pipe(browserSync.stream());
+}
+
+//svgSprite
+const svgSprites = () => {
+  return src(['app/images/icons/**.svg'])
+
+  .pipe(cheerio({
+    run: function($) {
+      $('[fill]').removeAttr('fill');
+      $('[strike]').removeAttr('stroke');
+      $('[style]').removeAttr('style');
+    },
+    parserOptions: {xmlMode: true}
+  }))
+
+  .pipe(replace('&gt;', '>'))
+
+  .pipe(svgSprite({
+    mode: {
+      stack: {
+        sprite: "../sprite.svg"
+      }
+    },
+  }))
+
+  .pipe(dest('app/images'));
+}
+
+//htmlInclude
 const htmlInclude = () => {
-  // return src('app/html/**/*.html')
-  return src(['app/html/*.html'])
+  // return src(['app/html/*.html'])
+  return src('app/html/**/*.html')
     .pipe(fileInclude({
         prefix: '@',
         basepath: '@file',
+        context: {
+            arr: ['test1', 'test2', 'test3', 'test4', 'test5'],
+            menu: ['Доставка', 'О нас', 'Новости', 'Контакты', 'Акции', 'Вакансии', 'Отзывы', 'Публичная оферта'],
+            catalog: ['Овощи и фрукты', 'Бакалея', 'Молочные продукты', 'Хлеб', 'Мясо', 'Колбаса', 'Рыба', 'Алкоголь', 'Напитки', 'Торты', 'Мясо', 'Чай, кофе'],
+        }
     }))
-    .pipe(dest('app'))
+    .pipe(dest('./app'))
     .pipe(browserSync.stream());
   }
 
@@ -46,8 +99,12 @@ function scripts() {
     'node_modules/jquery/dist/jquery.js',
     'node_modules/slick-carousel/slick/slick.js',
     'node_modules/mixitup/dist/mixitup.js',
-    'node_modules/ion-rangeslider/js/ion.rangeSlider.js',
+    'node_modules/nouislider/dist/nouislider.js',
+    'node_modules/simplebar/dist/simplebar.js',
+    'node_modules/select2/dist/js/select2.js',
     'node_modules/jquery-form-styler/dist/jquery.formstyler.js',
+    'node_modules/rateyo/src/jquery.rateyo.js',
+    'node_modules/swiper/swiper-bundle.js',
     'app/js/main.js'
   ])
     .pipe(concat('main.min.js'))
@@ -91,8 +148,13 @@ function watching() {
   watch(['app/**/*.html']).on('change', browserSync.reload);
   watch(['app/html/**/*.html'], htmlInclude);
   watch(['app/scss/**/*.scss']).on('change', browserSync.reload);
+  watch(['app/images/icons/**.svg'], svgSprites);
 }
 
+exports.beautifyHtml = beautifyHtml;
+exports.removeEmptyLines = removeEmptyLines;
+
+exports.svgSprites = svgSprites;
 exports.htmlInclude = htmlInclude;
 exports.styles = styles;
 exports.scripts = scripts;
@@ -102,5 +164,5 @@ exports.images = images;
 exports.cleanDist = cleanDist;
 
 exports.build = series(cleanDist, images, build);
-exports.default = parallel(styles, htmlInclude, scripts, browsersync, watching);
+exports.default = parallel(styles, svgSprites, htmlInclude, scripts, browsersync, watching);
 

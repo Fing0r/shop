@@ -1,0 +1,665 @@
+.header {
+  background-color: $green-900;
+  position: relative;
+
+  &__top {
+    padding: 16px 0;
+    font-size: 13px;
+    background-color: $dark-800;
+    color: $white;
+    left: 0;
+    right: 0;
+    text-transform: uppercase;
+    @extend %opensans;
+    font-weight: 700;
+
+    @include r($xl) {
+      padding: 15px 0;
+    }
+
+    @include r($md) {
+      padding-top: 14px;
+      padding-bottom: 15px;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__nav {
+    padding: 25px 0;
+
+    @include r($xga) {
+      padding: 20px 0;
+    }
+
+    @include r($ml) {
+      padding: 10px 0;
+    }
+
+    @include r($md) {
+      padding: 9px 0;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+
+    @include r($xl) {
+      justify-content: space-between;
+    }
+  }
+
+  &__logo {
+    margin-right: 24px;
+
+    @include r($xl) {
+      margin-right: 0;
+    }
+  }
+
+  &__catalog {
+    margin-right: 30px;
+
+    @include r($xga) {
+      margin-right: 20px;
+    }
+  }
+
+  &__search {
+    margin-right: 46px;
+
+    @include r($xga) {
+      margin-right: 20px;
+    }
+
+    @include r($xl) {
+      margin-right: 0;
+    }
+  }
+}
+
+.mobile-btn {
+  display: none;
+  position: relative;
+  z-index: 99;
+  height: 20px;
+  width: 30px;
+
+  @include r($xl) {
+    display: block;
+  }
+
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    left: 7px;
+    background-color: $white;
+    transition: transform 0.4s;
+  }
+
+  & span {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: $white;
+    left: 7px;
+    top: 9px;
+    transition: transform 0.4s;
+  }
+
+  &::after {
+    bottom: -1px;
+  }
+
+  &::before {
+    top: -1px;
+  }
+}
+
+.menu-mobile {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: -60px;
+  padding: 24px 15px 100px;
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  width: 100%;
+  background-color: $white;
+  border: 1px solid $silver-600;
+  display: none;
+  z-index: 999;
+  transform: translateX(-100%);
+  transition: transform 0.3s;
+
+  &--active {
+    transform: translateX(0);
+  }
+
+  @include r($xl) {
+    display: block;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 26px;
+  }
+
+  &__btn {
+    padding: 11px;
+  }
+
+  &__btn-icon {
+    fill: $black;
+  }
+
+  &__user {
+    margin: 0 -15px;
+    background-color: $green-900;
+    font-size: 18px;
+    line-height: 1;
+    color: $white;
+    padding: 15px 15px 15px 56px;
+    background-image: url('../images/icons/user.svg');
+    background-position: 15px center;
+    background-repeat: no-repeat;
+    display: block;
+  }
+
+  &__catalog {
+    display: block;
+    font-size: 18px;
+    line-height: 1;
+    padding: 15px 15px 15px 41px;
+    background-image: url('../images/icons/nav.svg');
+    background-position: left center;
+    background-repeat: no-repeat;
+  }
+}
+
+.contacts {
+  display: flex;
+
+  @include r($xl) {
+    font-size: 0;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-right: 48px;
+
+      @include r($xl) {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__link {
+    transition: opacity 0.3s;
+    position: relative;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &--address,
+    &--tel {
+      &::after {
+        content: '';
+        position: absolute;
+        width: 32px;
+        height: 23px;
+        left: 0;
+        top: -3px;
+        mask-size: cover;
+        mask-position: center;
+        mask-repeat: no-repeat;
+        background-color: $white;
+
+        @include r($xl) {
+          top: -1px;
+        }
+      }
+    }
+
+    &--address {
+      padding-left: 45px;
+
+      @include r($xl) {
+        padding-left: 55px
+      }
+
+      &::after {
+        mask-image: url('../images/sprite.svg#del-address');
+      }
+    }
+
+    &--tel {
+      padding-left: 34px;
+
+      @include r($xl) {
+        padding-left: 15px;
+      }
+
+      &::after {
+        mask-image: url('../images/sprite.svg#tel');
+        width: 23px;
+      }
+    }
+  }
+}
+
+.info {
+  display: flex;
+
+  @include r($xl) {
+    display: none;
+  }
+
+  &__item {
+    transition: opacity 0.3s;
+
+    &:not(:last-child) {
+      margin-right: 24px;
+
+      @include r($xl) {
+        margin-right: 18px;
+      }
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+.catalog {
+  max-width: 240px;
+  width: 100%;
+  @extend %opensans;
+  font-weight: 600;
+  position: relative;
+  z-index: 2;
+
+  &__btn {
+    width: 100%;
+    color: $green-900;
+    padding: 15px 38px 15px 61px;
+    background-color: $white;
+    border-radius: 6px;
+    transition: border-radius 0.8s, background-color 0.5s;
+    position: relative;
+
+    &--inactive,
+    &--active {
+      &::after {
+        content: '';
+        background-image: url('../images/icons/arrow-down.svg');
+        width: 7px;
+        height: 4px;
+        position: absolute;
+        right: 18px;
+        top: 50%;
+        transform: translateY(-45%);
+        transition: transform 0.5s;
+      }
+    }
+
+    &--active {
+      background-color: $green-200;
+      border-radius: 6px 6px 0 0;
+
+      &::after {
+        transform: translateY(-45%) rotateX(180deg);
+      }
+    }
+
+    &:hover {
+      background-color: $green-200;
+      border-radius: 6px 6px 0 0;
+
+      &::after {
+        transform: translateY(-45%) rotateX(180deg);
+        transition: transform 0.5s;
+      }
+    }
+
+    &::before {
+      content: '';
+      background-image: url('../images/icons/nav.svg');
+      position: absolute;
+      width: 25px;
+      height: 17px;
+      left: 18px;
+      bottom: 16px;
+    }
+  }
+
+  @include r($xl) {
+    display: none;
+  }
+
+  &__items {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    max-width: 240px;
+    width: 100%;
+    color: $black;
+    background-color: $white;
+    border-radius: 0 0 6px 6px;
+    text-align: start;
+    transform: scaleY(0);
+    opacity: 0.7;
+    transform-origin: 0 0;
+    transition: transform 0.3s ease-out, opacity 0.3s, transform-origin 0.3s ease-out;
+
+    &--active {
+      display: block;
+      top: 49px;
+      transform: scaleY(1);
+      transform-origin: 100% 0;
+      opacity: 1;
+      transition: transform 0.4s ease-out, transform-origin 0.3s ease-out;
+    }
+
+  }
+
+  &__link {
+    display: block;
+    padding: 12px 24px;
+    border: 1px solid rgba($silver-600, 0.3);
+    font-size: 16px;
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+    font-weight: 400;
+    transition: color 0.1s, border-left 0.1s;
+
+    &:hover {
+      color: $green-900;
+      border-left: 3px solid $green-900;
+    }
+  }
+}
+
+.search {
+  max-width: 576px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  @include r($xga) {
+    width: 50%;
+  }
+
+  @include r($md) {
+    position: absolute;
+    border: 1px solid $dark-800;
+    margin: 0 -15px;
+    width: 100%;
+    top: 100%;
+    z-index: 1;
+    transform: scaleY(0);
+    opacity: 0.7;
+    transform-origin: 0 0;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out, transform-origin 0.3s ease-out;
+  }
+
+  &--active {
+    @include r($md) {
+      top: 112px;
+      transform: scaleY(1);
+      transform-origin: 100% 0;
+      opacity: 1;
+      transition: transform 0.3s ease-out, opacity 0.3s ease-out, transform-origin 0.3s ease-out;
+    }
+  }
+
+  &__input {
+    background-color: $white;
+    padding: 15px;
+    padding-left: 51px;
+    height: 50px;
+    width: 100%;
+    font-size: 14px;
+    border-radius: 6px 0 0 6px;
+    background-image: url('../images/icons/search.svg');
+    background-repeat: no-repeat;
+    background-position: 12px center;
+
+    @include r($md) {
+      border-radius: 0;
+    }
+  }
+
+  &__btn {
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 15px 52px;
+    background-color: $dark-900;
+    border-radius: 0 6px 6px 0;
+    @extend %opensans;
+    font-weight: 600;
+    color: $white;
+
+    @include r($xga) {
+      padding: 15px 35px;
+    }
+
+    @include r($md) {
+      border-radius: 0;
+      padding: 15px 26px;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 4px rgba($white, 0.5)
+    }
+
+    &:hover {
+      background: rgba($dark-800, 0.85);
+    }
+  }
+
+}
+
+.user-nav {
+  display: flex;
+  align-content: center;
+
+  &__item {
+    width: 50px;
+    height: 50px;
+    border-radius: 3px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: background-color 0.3s;
+
+    &--search-icon,
+    &--login-icon,
+    &--favorites-icon,
+    &--cart-icon {
+      fill: $white;
+
+      @include r($md) {
+         width: 24px;
+         height: 24px;
+      }
+    }
+
+    &--search {
+      display: none;
+
+      @include r($md) {
+        display: block;
+      }
+    }
+
+    &--login {
+      @include r($xl) {
+        display: none;
+      }
+    }
+
+    &--favorites {
+      @include r($xl) {
+        display: none;
+      }
+    }
+
+    &:not(:last-child) {
+      margin-right: 12px;
+
+      @include r($xga) {
+        margin-right: 8px;
+      }
+    }
+
+    &:hover {
+      background-color: rgba($white, 0.1);
+    }
+
+    @include r($xga) {
+      width: 44px;
+      height: 44px;
+    }
+  }
+
+  &__num {
+    position: absolute;
+    left: 1px;
+    top: 2px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: $white;
+    color: $red-900;
+    text-align: center;
+    font-size: 10px;
+    line-height: 18px;
+  }
+}
+
+.cart {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  max-width: 495px;
+  transform: translateX(105%);
+  transition: transform 0.5s ease-out, height 999999s;
+  width: 100%;
+  background-color: $white;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+
+  @include r($ml) {
+    font-size: 14px;
+  }
+
+  &--active {
+    transform: translateX(0);
+    transition: transform 0.5s ease-out;
+  }
+
+  &__top {
+    padding: 19px 26px 12px 24px;
+    position: relative;
+
+    @include l($xl) {
+      padding: 10px 25px;
+    }
+  }
+
+  &__title {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  &__clear {
+    font-weight: 300;
+  }
+
+  &__close {
+    position: absolute;
+    right: 26px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__close-icon {
+    fill: $black;
+  }
+
+  &__items {
+    flex-grow: 1;
+    background-color: $silver-100;
+    padding: 12px;
+    border: 1px solid rgba($silver-600, 0.3);
+    overflow: auto;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 12px;
+    }
+  }
+
+  &__total {
+    text-align: center;
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+
+    @include r($md) {
+      padding: 18px 15px;
+      font-size: 14px;
+    }
+
+    @include l($xl) {
+      padding: 14px 15px;
+      font-size: 14px;
+    }
+  }
+
+  &__total-price {
+    font-size: 24px;
+    line-height: 1;
+    font-weight: 600;
+
+    @include r($md) {
+      font-size: 18px;
+    }
+  }
+
+  &__btn {
+    width: 100%;
+    padding: 22px 0;
+    border-radius: 0;
+    font-size: 18px;
+    text-align: center;
+
+    @include r($md) {
+      padding: 12px 0;
+    }
+
+    @include l($xl) {
+      padding: 12px 0;
+    }
+  }
+}

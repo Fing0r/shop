@@ -1,0 +1,781 @@
+.product-one {
+  margin-bottom: 85px;
+
+  @include r($xl) {
+    margin-bottom: 48px;
+  }
+
+  &__top {
+    margin-bottom: 64px;
+    position: relative;
+    display: flex;
+
+    @include r($xl) {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 32px;
+    }
+  }
+
+  &__slider {
+    border: 1px solid $silver-600;
+    border-radius: 4px;
+    margin-right: 30px;
+    max-width: 632px;
+    width: 100%;
+    min-height: 558px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include r($xl) {
+      margin-right: 0;
+      align-self: center;
+      margin-bottom: 32px;
+    }
+
+    @include r($md) {
+      min-height: 309px;
+    }
+
+    @include l($xl) {
+      min-height: 309px;
+      max-width: 100vw;
+      margin-right: 0;
+      margin-bottom: 22px;
+    }
+  }
+
+  &__wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+
+  &__slide {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__prev,
+  &__next {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    z-index: 998;
+    width: 62px;
+    height: 62px;
+    background-color: transparent;
+    border-radius: 6px;
+    transform: translateY(-51%);
+    z-index: 10;
+
+    @include r($md) {
+      display: none;
+    }
+
+    @include l($xl) {
+      display: block;
+    }
+
+    &:focus {
+      fill: black;
+      box-shadow: 0 0 0 3px rgba($green-900, 0.5);
+    }
+
+    &:hover,
+    &:active {
+      fill: $green-900;
+    }
+
+    &:hover {
+      background-color: rgba($green-200, 0.8);
+
+    }
+
+    &:active {
+      background-color: rgba($white, 0.8);
+    }
+  }
+
+  &__prev {
+    left: 20px;
+
+    @include r($xga) {
+      left: 2px;
+    }
+  }
+
+  &__next {
+    right: 20px;
+
+    @include r($xga) {
+      right: 2px;
+    }
+  }
+
+  &__arrow-icon {
+    transform: translateY(6%);
+  }
+
+
+  &__img {
+    object-fit: contain;
+
+    @include r($xga) {
+      width: 370px;
+      height: auto;
+    }
+
+    @include r($md) {
+      width: 270px;
+      height: auto;
+    }
+
+    @include l($xl) {
+      width: 250px;
+      height: auto;
+    }
+  }
+
+  &__box {
+    padding: 21px 0;
+    width: 100%;
+
+    @include r($xl) {
+      padding: 0;
+      display: contents;
+    }
+  }
+
+  &__title {
+    margin-bottom: 19px;
+    font-size: 32px;
+    line-height: 1.2;
+    @include line-clamp(32, 1.2, 2);
+    @extend %ruda;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    padding-right: 2px;
+
+    @include r($xl) {
+      margin-bottom: 30px;
+      font-size: 26px;
+      order: -1;
+    }
+  }
+
+  &__badges {
+    padding-left: 3px;
+    margin-bottom: 20px;
+    max-height: 29px;
+  }
+
+  &__badge {
+    display: inline-block;
+    padding: 5px 9px;
+    color: $white;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1;
+    text-transform: uppercase;
+
+    &--new {
+      background-color: $green-900;
+    }
+
+    &--sale {
+      background-color: $red-900;
+    }
+
+    &--hit {
+      background-color: $orange-900;
+    }
+  }
+
+  &__data {
+    display: flex;
+    align-items: center;
+    margin-bottom: 31px;
+
+    @include r($xl) {
+      width: 100%;
+    }
+
+    @include r($md) {
+      flex-wrap: wrap;
+      gap: 18px 0;
+      margin-bottom: 25px;
+    }
+
+    @include l($xl) {
+      width: 100%;
+      margin-bottom: 25px;
+    }
+  }
+
+  &__code {
+    margin-right: 12px;
+    display: inline-block;
+    padding: 4px 5px 3px 5px;
+    color: $silver-600;
+    border-radius: 3px;
+    line-height: 1.2;
+    background-color: $silver-100;
+
+    @include r($md) {}
+  }
+
+  &__rating {
+    margin-right: auto;
+  }
+
+  &__status {
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 600;
+    display: block;
+    text-transform: uppercase;
+
+    &--in-stock {
+      color: $green-900;
+    }
+
+    &--running-out {
+      color: $red-900
+    }
+
+    &--not-available {
+      color: $silver-600
+    }
+
+
+    @include r($md) {
+      width: 100%;
+    }
+
+    @include l($xl) {
+      width: auto;
+    }
+  }
+
+  &__offer {
+    margin-bottom: 58px;
+
+    @include r($xl) {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__price {
+    line-height: 1;
+    font-weight: 700;
+
+    &--new {
+      font-size: 30px;
+      color: $green-900;
+    }
+
+    &--old {
+      font-size: 20px;
+      color: $silver-600;
+      position: relative;
+      margin-right: 16px;
+
+      &::before {
+        content: '';
+        position: absolute;
+        border-bottom: 1px solid $silver-600;
+        width: 90%;
+        height: 50%;
+        left: 0;
+        top: 0;
+        transform: rotate(-13.99deg);
+      }
+    }
+  }
+
+  &__add-product {
+    display: flex;
+    align-items: center;
+    margin-bottom: 32px;
+
+    @include r($xl) {
+      width: 100%;
+    }
+
+    @include l($xl) {
+      width: 100%;
+    }
+  }
+
+  &__quantity {
+    background-color: rgba($green-900, 0.1);
+    text-align: center;
+    height: 44px;
+    border-radius: 3px;
+    width: 158px;
+    font-size: 20px;
+    line-height: 1;
+    margin-right: 18px;
+  }
+
+  &__add-basket {
+    margin-right: auto;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1;
+    text-transform: uppercase;
+    padding: 14px 13px 14px 49px;
+    border-radius: 3px;
+    position: relative;
+
+    @include r($xga) {
+      font-size: 0;
+      padding: 0;
+      width: 48px;
+      height: 44px;
+    }
+
+    @include r($xl) {
+      padding: 14px 13px 14px 49px;
+      font-size: 16px;
+      width: auto;
+      height: auto;
+    }
+
+    @include r($md) {
+      font-size: 0;
+      padding: 0;
+      width: 48px;
+      height: 44px;
+    }
+
+    @include l($xl) {
+      padding: 14px 13px 14px 49px;
+      font-size: 16px;
+      width: auto;
+      height: auto;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      @include mask(24, 23, $white, cart);
+      left: 12px;
+      top: 10px;
+    }
+  }
+
+  &__heart-icon {
+    fill: $silver-600;
+
+    &:hover {
+      fill: $orange-900;
+    }
+  }
+
+  &__shipping {
+    margin-bottom: 18px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid $silver-600;
+    @extend %ruda;
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: 0.03em;
+  }
+
+  &__shipping-info {
+    max-width: 470px;
+    margin-bottom: 18px;
+    line-height: 1.6;
+
+    @include r($md) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__detail {
+    color: $green-900;
+    line-height: 1.2;
+  }
+}
+
+.product-tabs {
+  letter-spacing: 0;
+  max-width: 690px;
+  margin: 0 auto;
+  position: relative;
+  padding-top: 18px;
+
+  @include r($xl) {
+    padding-top: 13px;
+  }
+
+  @include r($ml) {
+    padding-top: 12px;
+  }
+
+  @include r($se) {
+    padding-top: 11px;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    border-top: 1px solid $silver-600;
+    top: -1px;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin: 0 -50vw;
+
+    @include r($xl) {
+      top: -3px;
+    }
+  }
+
+  &__list {
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+
+    @include r($xl) {
+      margin-bottom: 35px;
+      padding: 0;
+    }
+  }
+
+  &__tab {
+    @extend %ruda;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.3;
+    text-transform: uppercase;
+    padding-top: 19px;
+    position: relative;
+
+    @include r($xl) {
+      padding-top: 16px;
+    }
+
+    @include r($md) {
+      font-size: 14px;
+    }
+
+    @include r($se) {
+      font-size: 13px;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      background-color: $green-900;
+      transform: translateX(-50%);
+      top: 0;
+      left: 50%;
+      right: 0;
+      transition: color 0.3s, width 0.2s;
+    }
+
+    &:active::after {
+      width: 100%;
+    }
+
+    &--active {
+      color: $green-900;
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &:hover {
+      color: $green-900;
+    }
+  }
+}
+
+.product-info {
+  &__item {
+    display: none;
+
+    &--active {
+      display: block;
+    }
+  }
+}
+
+.description {
+
+  &__text {
+    font-size: 16px;
+    line-height: 1.65;
+    letter-spacing: 0;
+    color: #4F4F4F;
+
+    p {
+      &:not(:last-child) {
+        margin-bottom: 26px;
+      }
+    }
+  }
+}
+
+.characteristic {
+  font-size: 16px;
+  line-height: 1.6;
+
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 11px;
+    }
+  }
+
+  &__name {
+    font-weight: 700;
+  }
+}
+
+.reviews-top {
+  margin-bottom: 76px;
+
+  @include r($xl) {
+    margin-bottom: 30px;
+  }
+
+  &__title {
+    text-transform: uppercase;
+    @extend %ruda;
+    color: $dark-900;
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 600;
+    margin-bottom: 48px;
+    letter-spacing: 0.03em;
+
+    @include r($xl) {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__item {
+    &:not(:last-child) {
+      border-bottom: 1px solid $silver-600;
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+    }
+  }
+
+  &__top {
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__img {
+    border-radius: 50%;
+    margin-right: 24px;
+  }
+
+
+  &__info {
+    margin-right: auto;
+  }
+
+
+  &__author,
+  &__data {
+    display: block;
+  }
+
+
+  &__author {
+    margin-bottom: 4px;
+    font-weight: 700;
+    color: $dark-900;
+  }
+
+  &__data {
+    line-height: 1.7;
+  }
+
+  &__text {
+    font-size: 16px;
+    line-height: 1.6;
+
+    @include r($md) {
+      max-width: 343px
+    }
+
+    p {
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+.reviews-form {
+  position: relative;
+
+  &__title {
+    text-transform: uppercase;
+    @extend %ruda;
+    color: $dark-900;
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 600;
+    margin-bottom: 48px;
+    letter-spacing: 0.03em;
+
+    @include r($xl) {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__box {
+    margin-bottom: 26px;
+    display: flex;
+    color: $dark-900;
+
+    @include r($md) {
+      margin-bottom: 20px;
+      display: block;
+
+      label {
+        &:not(:last-child) {
+          margin-bottom: 18px;
+        }
+      }
+    }
+  }
+
+  &__rating {
+    font-size: 16px;
+    line-height: 1.3;
+    margin-bottom: 17px;
+
+    span {
+      display: inline-block;
+      margin-right: 14px
+    }
+  }
+
+  &__star {
+    display: inline-block;
+  }
+
+  &__inner {
+    display: block;
+
+
+    label {
+      &:not(:last-child) {
+        margin-bottom: 24px;
+      }
+    }
+  }
+
+  &__review {
+    border: 1px solid $silver-600;
+    border-radius: 3px;
+    padding: 17px;
+    width: 100%;
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.3;
+
+    &:not(:last-child) {
+      margin-bottom: 24px;
+    }
+
+    &--textarea {
+      min-height: 164px;
+      resize: none;
+    }
+  }
+
+  &__label {
+    display: block;
+    max-width: 260px;
+    width: 100%;
+    font-size: 16px;
+    line-height: 1.3;
+    color: $dark-900;
+
+    @include r($md) {
+      margin-right: 0;
+      max-width: 550px;
+    }
+
+
+    &--textarea {
+      max-width: 400px;
+      width: 100%;
+      margin-right: 30px;
+
+      @include r($md) {
+        margin-right: 0;
+        max-width: 550px;
+      }
+    }
+  }
+
+  &__save {
+    display: flex;
+    margin-bottom: 24px;
+    padding-left: 36px;
+    line-height: 1.3;
+
+    &:hover .reviews-form__checkbox {
+      border: 1px solid $dark-500;
+    }
+  }
+
+  &__checkbox {
+    width: 24px;
+    height: 24px;
+    background-color: $white;
+    border: 1px solid $silver-600;
+    border-radius: 3px;
+    position: absolute;
+    left: 0;
+    transform: translateY(-2px);
+    transition: border 0.3s;
+  }
+
+  &__input {
+    @extend %checked-hidden;
+
+
+    &:checked+.reviews-form__checkbox {
+      background-image: url('../images/icons/check.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      border: 1px solid $dark-500;
+    }
+  }
+
+  &__btn {
+    letter-spacing: 0.03em;
+    //пришлось задать, потомучто для всего блока делал равным 0
+  }
+}
+
+.jq-ry-container {
+  padding: 0;
+}
+
+// .slick-slide {
+//   width: 330px;
+// }

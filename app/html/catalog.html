@@ -5,24 +5,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ФРЕШОК</title>
+  <link rel="icon" href="images/favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="css/style.min.css">
 </head>
 
 <body>
 
-  @include('./components/header.html')
+  @include('./components/_header.html')
+
+  @include('./components/_breadcrumbs.html', {
+  "addLi": "",
+  "nameLink": ""
+  })
 
   <main class="main">
 
-    @include('./components/top.html')
-
-    @include('./components/catalog.html')
-
-
+    @include('./components/catalog/_shop-catalog.html')
 
   </main>
 
-  @include('./components/footer.html')
+  @include('./components/_advantages.html',{
+  "section": "",
+  })
+  
+  @include('./components/_footer.html')
 
   <script src="js/main.min.js"></script>
   <script async="" src="/browser-sync/browser-sync-client.js?v=2.23.6"></script>

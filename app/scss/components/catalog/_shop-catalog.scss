@@ -1,0 +1,296 @@
+.shop-catalog {
+  &__btn-hide {
+    position: absolute;
+    background-image: url('../images/icons/close-mini.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 18px;
+    height: 18px;
+    top: 29px;
+    right: 32px;
+    display: none;
+
+    @include r($xl) {
+      display: block;
+    }
+  }
+
+  &__title {
+    @include line-clamp(42, 1.2, 3);
+    @extend %ruda;
+    font-weight: 700;
+    margin-bottom: 48px;
+    letter-spacing: 0.03em;
+    color: $dark-900;
+
+    @include r($xl) {
+      margin-bottom: 30px;
+    }
+
+    @include r($md) {
+      font-size: 30px;
+    }
+
+    @include l($xl) {
+      font-size: 30px;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+
+    @include r($xl) {
+      display: block;
+    }
+  }
+
+  &__filters {
+    margin-right: 30px;
+
+    @include r($xga) {
+      margin-right: 0;
+      position: fixed;
+      transform: translateX(-150%);
+      z-index: 10001;
+      background-color: white;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      overflow-y: scroll;
+      padding: 76px 21px 50px 0;
+      border: 1px solid $silver-600;
+      transition: transform 0.3s;
+    }
+
+    &--active {
+      transform: translateX(0%);
+      transition: transform 0.3s;
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+
+    @include r($xl) {
+      display: block;
+    }
+  }
+}
+
+.filter {
+  min-width: 300px;
+
+  &:not(:last-child) {
+    margin-bottom: 29px;
+  }
+
+  &__title {
+    font-size: 24px;
+    line-height: 1.2;
+    @extend %ruda;
+    font-weight: 400;
+    color: $dark-900;
+    padding: 18px 18px 17px;
+    position: relative;
+    border: 1px solid $silver-600;
+    border-radius: 6px 6px 0 0;
+    transition: border-radius 0.8s, border 0.3s;
+    cursor: pointer;
+
+    &--inactive,
+    &--active {
+      &::after {
+        content: '';
+        background-image: url('../images/icons/chevron.svg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 11px;
+        height: 18px;
+        position: absolute;
+        right: 27px;
+        top: 1px;
+        bottom: 0;
+        margin: auto;
+        transform: rotate(-90deg);
+        transition: transform 0.5s;
+      }
+    }
+
+    &--inactive {
+      border-radius: 6px;
+
+      &::after {
+        transform: rotate(-90deg) scale(-1);
+      }
+    }
+
+    &:hover {
+      border: 1px solid $dark-500;
+    }
+  }
+
+  &__form {
+    border: 1px solid $silver-600;
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    max-height: 300px;
+    padding: 18px 18px 17px;
+    transform: scaleY(1);
+    transform-origin: 100% 0;
+    opacity: 1;
+    transition: transform 0.4s ease-in-out, padding 0.3s, max-height 0.3s, opacity 0.3s, transform-origin 0.3s;
+
+    &--active {
+      transform: scaleY(0);
+      opacity: 0.7;
+      transform-origin: 0 0;
+      transition: transform 0.3s ease-in-out, opacity 0.3s, transform-origin 0.3s, padding 0.3s, max-height 0.3s;
+      max-height: 0;
+      padding: 0 18px;
+    }
+  }
+}
+
+.catalog-products {
+  @include r($xga) {
+    margin: 0 auto 72px;
+  }
+
+  @include l($xga) {
+    margin: 0 auto 72px;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    grid-gap: 30px;
+    margin-bottom: 48px;
+
+    @include r($xl) {
+      grid-template-columns: repeat(2, minmax(170px, 300px));
+      grid-gap: 25px;
+      margin-bottom: 24px;
+      justify-content: center;
+    }
+
+    @include r($md) {
+      grid-template-columns: repeat(2, minmax(170px, 1fr));
+      grid-gap: 5px;
+    }
+
+    @include r($se) {
+      grid-template-columns: repeat(1, minmax(170px, 300px));
+      grid-gap: 10px;
+    }
+  }
+
+  &--list {
+    .catalog-products {
+      &__list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(465px, 1fr));
+        grid-gap: 30px;
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include r($xl) {
+      flex-direction: column;
+    }
+  }
+
+  &__add {
+    padding: 12px 26px;
+
+    @include r($xl) {
+      margin-bottom: 24px;
+    }
+  }
+}
+
+.pagination {
+  display: flex;
+
+  & a {
+    & path {
+      fill: $dark-500;
+    }
+  }
+
+  &,
+  &__item {
+    &:hover {
+      cursor: default;
+    }
+
+    & a:hover:not(.pagination__page--active) {
+      outline: 1px solid $dark-500;
+      cursor: pointer;
+    }
+
+    &:not(:last-child) {
+      margin-right: 6px;
+    }
+
+    @include r($xl) {
+      &:nth-child(even) {
+        display: none;
+      }
+    }
+  }
+
+  &__items {
+    display: flex;
+    margin-right: 6px;
+  }
+
+  &__next,
+  &__prev {
+    & svg {
+      width: 11px;
+      height: 18px;
+      transform: translateY(20%);
+    }
+
+    &:not([href]) {
+      fill: $silver-600;
+    }
+  }
+
+  &__prev {
+    transform: rotate(-180deg);
+    margin-right: 6px;
+  }
+
+  &__prev,
+  &__next,
+  &__item {
+    width: 48px;
+    height: 48px;
+    background-color: $silver-100;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 48px;
+  }
+
+  &__page {
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+    border-radius: 3px;
+    display: block;
+
+    &--active {
+      border: 1px solid $dark-500;
+    }
+  }
+}

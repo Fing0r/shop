@@ -1,0 +1,68 @@
+.jq-number {
+  position: relative;
+
+  &__field {
+    width: 100%;
+
+    & input {
+      text-align: center;
+    }
+  }
+
+  &__spin {
+    position: absolute;
+    left: 0;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 29px;
+      height: 3px;
+      border: none;
+      background-color: $white;
+      top: 21px;
+      left: 8px;
+    }
+
+    &.minus,
+    &.plus {
+      top: 0;
+      bottom: 0;
+      max-width: 44px;
+      width: 100%;
+      background-color: $green-900;
+      cursor: pointer;
+      transition: opacity 0.2s, background-color 0.1s ease-out, box-shadow 0.1s;
+
+      &:hover {
+        background-color: #4d810c;
+      }
+
+      &:active {
+        box-shadow: inset 0 4px 4px rgb(0 0 0 / 25%);
+        background-color: $green-900;
+      }
+    }
+
+    &.minus {
+      border-radius: 3px 0 0 3px;
+    }
+
+    &.plus {
+      border-radius: 0 3px 3px 0;
+      right: 0;
+      left: auto;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 8px;
+        left: 21px;
+        width: 3px;
+        height: 29px;
+        border: none;
+        background-color: $white;
+      }
+    }
+  }
+}

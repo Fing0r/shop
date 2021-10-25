@@ -1,0 +1,119 @@
+<section class="interest">
+  <div class="container interest__container">
+    <!-- пришлось добавить interest__container, чтобы стрелки отображались, так-как overflow: hidden; был неоходим у &__slider, чтобы слайды
+     обрезались за пределами контейнера -->
+    <h2 class="interest__title">
+      вас может заинтересовать
+    </h2>
+    <div class="interest__slider">
+      <ul class="interest__list">
+        <li class="interest__item">
+          @include('../_product-card.html', {
+          "card": "std",
+          "badges": "y",
+          "new": "",
+          "sale": " ",
+          "hit": "y",
+          "image": "5",
+          "width": "298",
+          "height": "215",
+          "grid": "y",
+          "name": "Морковь молодая с бабушкиной грядки, 1кг",
+          "new-price": "49",
+          "old": " ",
+          "old-price": " ",
+          "status": "n",
+          "rating": "4.5",
+          })
+        </li>
+        <li class="interest__item">
+          @include('../_product-card.html', {
+          "card": "std",
+          "badges": "y",
+          "new": "",
+          "sale": "y",
+          "hit": " ",
+          "image": "6",
+          "width": "298",
+          "height": "215",
+          "grid": "y",
+          "name": "Напиток сокосодержащий Sanpellegrino Aranciata Orange Красный апельсин безалкогольный...",
+          "new-price": "199",
+          "old": "y",
+          "old-price": "299",
+          "status": "s",
+          "rating": "4.5",
+          })
+        </li>
+        <li class="interest__item">
+          @include('../_product-card.html', {
+          "card": "std",
+          "badges": "y",
+          "new": "y",
+          "sale": " ",
+          "hit": " ",
+          "image": "7",
+          "width": "298",
+          "height": "215",
+          "grid": "y",
+          "name": "Кофе с коноплей органический Caffé Salomoni 250г",
+          "new-price": "877",
+          "old": " ",
+          "old-price": " ",
+          "status": "o",
+          "rating": "4.5",
+          })
+        </li>
+        <li class="interest__item">
+          @include('../_product-card.html', {
+          "card": "std",
+          "badges": "y",
+          "new": "y",
+          "sale": " ",
+          "hit": " ",
+          "image": "7",
+          "width": "298",
+          "height": "215",
+          "grid": "y",
+          "name": "Кофе с коноплей органический Caffé Salomoni 250г",
+          "new-price": "877",
+          "old": " ",
+          "old-price": " ",
+          "status": "o",
+          "rating": "4.5",
+          })
+        </li>
+        <li class="interest__item">
+          @include('../_product-card.html', {
+          "card": "std",
+          "badges": "y",
+          "new": "",
+          "sale": " ",
+          "hit": "y",
+          "image": "3",
+          "width": "298",
+          "height": "215",
+          "grid": "y",
+          "name": "Питахайя красная с белой мякотью, 1шт",
+          "new-price": "1019",
+          "old": " ",
+          "old-price": " ",
+          "status": "s",
+          "rating": "4.5",
+          })
+        </li>
+      </ul>
+      <button class="interest__prev" type="button" aria-label="предыдущая картинка">
+        <svg class="interest__arrow-icon" width="20" height="32">
+          <use xlink:href="images/sprite.svg#prewArrow"></use>
+        </svg>
+      </button>
+      <button class="interest__next" type="button" aria-label="слудующая картинка">
+        <svg class="interest__arrow-icon" width="20" height="32">
+          <use xlink:href="images/sprite.svg#nextArrow"></use>
+        </svg>
+      </button>
+      <div class="interest__dots"></div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,311 @@
+<section class="shop-catalog">
+  <div class="container">
+    <h1 class="shop-catalog__title">Каталог товаров</h1>
+    <div class="shop-catalog__inner">
+      <div class="shop-catalog__filters">
+        <button class="shop-catalog__btn-hide" type="button" aria-label="закрыть меню фильтров"></button>
+        @include('./_categories-filter.html', {
+        "filter": "yes",
+        })
+        @include('./_offer-filter.html', {
+        "filter": "yes",
+        })
+        @include('./_brand-filter.html', {
+        "filter": "yes",
+        })
+        @include('./_price-filter.html', {
+        "filter": "yes",
+        })
+      </div>
+      <div class="shop-catalog__content">
+        @include('./_top-filter.html')
+        <section class="section catalog-products">
+          <h2 class="visually-hidden">Продукты</h2>
+          <ul class="catalog-products__list">
+            <li class="catalog-products__item">
+              @include('../_product-card.html', {
+              "card": "std",
+              "badges": "y",
+              "new": "y",
+              "sale": "y",
+              "hit": "",
+              "image": "1",
+              "width": "298",
+              "height": "215",
+              "grid": "y",
+              "name": "Ананас, 1кг",
+              "new-price": "999",
+              "old": "y",
+              "old-price": "1999",
+              "status": "s",
+              "rating": "4.5",
+              })
+            </li>
+
+            <li class="catalog-products__item">
+              @include('../_product-card.html', {
+              "card": "std",
+              "badges": " ",
+              "new": "",
+              "sale": " ",
+              "hit": " ",
+              "image": "2",
+              "width": "298",
+              "height": "215",
+              "grid": "y",
+              "name": "Лимон, 1кг",
+              "new-price": "199",
+              "old": " ",
+              "old-price": " ",
+              "status": "s",
+              "rating": "4.5",
+              })
+            </li>
+
+            <li class="catalog-products__item">
+              @include('../_product-card.html', {
+              "card": "std",
+              "badges": "y",
+              "new": "",
+              "sale": " ",
+              "hit": "y",
+              "image": "3",
+              "width": "298",
+              "height": "215",
+              "grid": "y",
+              "name": "Питахайя красная с белой мякотью, 1шт",
+              "new-price": "1019",
+              "old": " ",
+              "old-price": " ",
+              "status": "s",
+              "rating": "4.5",
+              })
+            </li>
+
+            <li class="catalog-products__item">
+              @include('../_product-card.html', {
+              "card": "std",
+              "badges": "y",
+              "new": "",
+              "sale": " ",
+              "hit": "y",
+              "image": "5",
+              "width": "298",
+              "height": "215",
+              "grid": "y",
+              "name": "Морковь молодая с бабушкиной грядки, 1кг",
+              "new-price": "49",
+              "old": " ",
+              "old-price": " ",
+              "status": "n",
+              "rating": "4.5",
+              })
+            </li>
+
+            <li class="catalog-products__item">
+              @include('../_product-card.html', {
+              "card": "std",
+              "badges": "y",
+              "new": "",
+              "sale": "y",
+              "hit": " ",
+              "image": "6",
+              "width": "298",
+              "height": "215",
+              "grid": "y",
+              "name": "Напиток сокосодержащий Sanpellegrino Aranciata Orange Красный апельсин безалкогольный...",
+              "new-price": "199",
+              "old": "y",
+              "old-price": "299",
+              "status": "s",
+              "rating": "4.5",
+              })
+            </li>
+
+            <li class="catalog-products__item">
+              @include('../_product-card.html', {
+              "card": "std",
+              "badges": "y",
+              "new": "y",
+              "sale": " ",
+              "hit": " ",
+              "image": "7",
+              "width": "298",
+              "height": "215",
+              "grid": "y",
+              "name": "Кофе с коноплей органический Caffé Salomoni 250г",
+              "new-price": "877",
+              "old": " ",
+              "old-price": " ",
+              "status": "o",
+              "rating": "4.5",
+              })
+            </li>
+
+            <li class="catalog-products__item">
+              @include('../_product-card.html', {
+              "card": "std",
+              "badges": "y",
+              "new": "y",
+              "sale": " ",
+              "hit": " ",
+              "image": "4",
+              "width": "298",
+              "height": "215",
+              "grid": "y",
+              "name": "Перец оранжевый, 1кг",
+              "new-price": "349",
+              "old": " ",
+              "old-price": " ",
+              "status": "o",
+              "rating": "4.5",
+              })
+            </li>
+
+            <li class="catalog-products__item">
+              @include('../_product-card.html', {
+              "card": "std",
+              "badges": " ",
+              "new": "",
+              "sale": " ",
+              "hit": " ",
+              "image": "8",
+              "width": "298",
+              "height": "215",
+              "grid": "y",
+              "name": "Кетчуп томатный детский органический Bio-Zentrale 500мл",
+              "new-price": "600",
+              "old": " ",
+              "old-price": " ",
+              "status": "s",
+              "rating": "4.5",
+              })
+            </li>
+
+            <li class="catalog-products__item">
+              @include('../_product-card.html', {
+              "card": "std",
+              "badges": "y",
+              "new": "y",
+              "sale": "y",
+              "hit": "",
+              "image": "1",
+              "width": "298",
+              "height": "215",
+              "grid": "y",
+              "name": "Ананас, 1кг",
+              "new-price": "999",
+              "old": "y",
+              "old-price": "1999",
+              "status": "s",
+              "rating": "4.5",
+              })
+            </li>
+
+            <li class="catalog-products__item">
+              @include('../_product-card.html', {
+              "card": "std",
+              "badges": "y",
+              "new": "",
+              "sale": " ",
+              "hit": "y",
+              "image": "5",
+              "width": "298",
+              "height": "215",
+              "grid": "y",
+              "name": "Морковь молодая с бабушкиной грядки, 1кг",
+              "new-price": "49",
+              "old": " ",
+              "old-price": " ",
+              "status": "o",
+              "rating": "4.5",
+              })
+            </li>
+
+            <li class="catalog-products__item">
+              @include('../_product-card.html', {
+              "card": "std",
+              "badges": "y",
+              "new": "",
+              "sale": "y",
+              "hit": " ",
+              "image": "6",
+              "width": "298",
+              "height": "215",
+              "grid": "y",
+              "name": "Напиток сокосодержащий Sanpellegrino Aranciata Orange Красный апельсин безалкогольный...",
+              "new-price": "199",
+              "old": "y",
+              "old-price": "299",
+              "status": "o",
+              "rating": "4.5",
+              })
+            </li>
+
+            <li class="catalog-products__item">
+              @include('../_product-card.html', {
+              "card": "std",
+              "badges": "y",
+              "new": "y",
+              "sale": " ",
+              "hit": " ",
+              "image": "7",
+              "width": "298",
+              "height": "215",
+              "grid": "y",
+              "name": "Кофе с коноплей органический Caffé Salomoni 250г",
+              "new-price": "877",
+              "old": " ",
+              "old-price": " ",
+              "status": "o",
+              "rating": "4.5",
+              })
+            </li>
+          </ul>
+          <div class="catalog-products__bottom">
+            <button class="catalog-products__add btn" type="button">Показать еще</button>
+            <div class="pagination">
+              <span class="pagination__prev" aria-label="предыдущая страница">
+                <svg class="pagination__arrow-icon" width="11" height="18">
+                  <use xlink:href="images/sprite.svg#chevron"></use>
+                </svg>
+              </span>
+              <ul class="pagination__items">
+                <li class="pagination__item">
+                  <a class="pagination__page pagination__page--active" aria-label="текущая страница">
+                    1
+                  </a>
+                </li>
+                <li class="pagination__item">
+                  <a class="pagination__page" href="#" aria-label="страница номер">
+                    2
+                  </a>
+                </li>
+                <li class="pagination__item">
+                  <span class="pagination__page">
+                    ...
+                  </span>
+                </li>
+                <li class="pagination__item">
+                  <a class="pagination__page" href="#" aria-label="страница номер">
+                    9
+                  </a>
+                </li>
+                <li class="pagination__item">
+                  <a class="pagination__page" href="#" aria-label="страница номер">
+                    10
+                  </a>
+                </li>
+              </ul>
+              <a class="pagination__next" href="#" aria-label="следующая страница">
+                <svg class="pagination__arrow-icon" width="11" height="18">
+                  <use xlink:href="images/sprite.svg#chevron"></use>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>

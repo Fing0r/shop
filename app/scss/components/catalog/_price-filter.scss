@@ -1,0 +1,84 @@
+.price-filter {
+  &__interval {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__from,
+  &__to {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    line-height: 1.2;
+    color: $silver-600;
+  }
+
+  &__min,
+  &__max {
+    max-width: 80px;
+    width: 100%;
+    text-align: center;
+    padding: 8px 12px;
+    line-height: 1;
+    font-size: 16px;
+    border: 1px solid $silver-600;
+    border-radius: 3px;
+    background-color: $silver-100;
+    margin: 0 5px;
+    outline: transparent;
+    transition: box-shadow 0.3s;
+
+    /* Chrome, Safari, Edge, Opera */
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Firefox */
+    &[type=number] {
+      -moz-appearance: textfield;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 3px $green-200;
+    }
+  }
+}
+
+.noUi-connects {
+  background-color: $silver-600;
+  height: 2px;
+  top: 8px;
+}
+
+.noUi-target {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.noUi-handle {
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background-color: $green-900;
+  box-shadow: none;
+
+  &::before,
+  &::after {
+    display: none;
+  }
+}
+
+.noUi-connect {
+  background-color: $green-900;
+}
+
+.noUi-horizontal .noUi-handle {
+  width: 18px;
+  height: 18px;
+  right: -9px;
+  top: 0px;
+  cursor: pointer;
+}

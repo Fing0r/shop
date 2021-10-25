@@ -1,0 +1,81 @@
+.facebook-icon,
+.telegram-icon,
+.instagram-icon,
+.youtube-icon {
+  width: 33px;
+  height: 32px;
+  fill: $dark-800;
+}
+
+.youtube-icon {
+  width: 32px;
+}
+
+.close-icon {
+  width: 18px;
+  height: 18px;
+  fill: $black;
+}
+
+.search-icon,
+.user-icon,
+.heart-icon,
+.cart-icon,
+.cart-cart-icon {
+  width: 24px;
+  height: 24px;
+  fill: $white;
+}
+
+.user-icon {
+  width: 25px;
+  height: 32px;
+}
+
+.heart-icon {
+  width: 32px;
+  height: 29px;
+}
+
+.cart-icon {
+  width: 32px;
+  height: 31px;
+}
+
+.cart-cart-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.prewArrow-icon,
+.nextArrow-icon {
+  width: 20px;
+  height: 32px;
+  fill: $dark-500;
+
+  &:hover {
+    fill: $green-900;
+  }
+}
+
+.heart-product-icon {
+  width: 44px;
+  height: 39px;
+  fill: $silver-600;
+}
+
+.heart-card-icon {
+  width: 32px;
+  height: 29px;
+  fill: $silver-600;
+
+  &:hover {
+    fill: $orange-900;
+  }
+}
+
+// .grid-icon {
+//   width: 36px;
+//   height: 34px;
+//   fill: $green-900;
+// }

@@ -1,0 +1,136 @@
+.shope-news {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+
+    @include r($xga) {
+      display: block;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 0;
+
+    @include r($xga) {
+      text-align: left;
+      margin-bottom: 12px;
+    }
+  }
+
+  &__link {
+    line-height: 1;
+    color: $green-900;
+    border-bottom: 2px solid $green-900;
+    align-self: center;
+    padding: 0 6px 6px 0;
+    transition: color 0.3s;
+    font-weight: 700;
+
+    &:hover {
+      color: $green-1200
+    }
+
+    &:active {
+      color: $green-1200
+    }
+  }
+
+  &__items {
+    display: flex;
+    justify-content: space-between;
+
+    @include r($xga) {
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  &__item {
+    @include r($xga) {
+      margin: 0 auto;
+    }
+
+    &:not(:last-child) {
+      @include r($xga) {
+        margin-bottom: 14px;
+      }
+    }
+  }
+}
+
+.news-card {
+  box-shadow: 0 3px 3px rgba($black, 0.25);
+  border-radius: 6px;
+  max-width: 410px;
+  position: relative;
+  padding-bottom: 18px;
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: 0 6px 6px rgba($black, 0.25);
+  }
+
+  &__img {
+    border-radius: 6px 6px 0 0;
+    object-fit: cover;
+    margin-bottom: 18px;
+  }
+
+  &__text {
+    padding: 0 18px;
+    height: 72px;
+    font-weight: 600;
+    letter-spacing: 0;
+    transition: color 0.3s;
+    @include line-clamp(16, 1.5, 3);
+
+    //если у картинки убрать margin-bottom: 18px; и у news-card  padding-bottom: 18px; а тексту задать сверху и снизу padding, то текс из-за @include line-clamp(16, 1.5, 3); залезает на паддинги 
+
+    @include r($xga) {
+      font-size: 14px;
+      height: auto;
+      max-width: 350px;
+    }
+
+    @include r($se) {
+      max-width: 290px;
+    }
+
+    &:hover {
+      color: $green-900;
+    }
+  }
+
+  &__date {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    max-width: 65px;
+    width: 100%;
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    padding: 18px 0 10px;
+    text-align: center;
+    border-radius: 0 0 4px 4px;
+    color: $dark-900;
+    text-transform: uppercase;
+  }
+
+  &__mount {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  &__num {
+    font-size: 30px;
+    line-height: 1;
+    @extend %ruda;
+    font-weight: 600;
+  }
+}

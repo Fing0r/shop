@@ -1,0 +1,15 @@
+<div class="breadcrumbs">
+  <div class="container">
+    <ul class="breadcrumbs__list">
+      <li class="breadcrumbs__item">
+        <a class="breadcrumbs__link" href="#">Главная</a>
+      </li>
+      <li class="breadcrumbs__item">
+        <a class="breadcrumbs__link" @if(context.addLi ==='yes' ){href="#"}>Каталог товаров</a>
+      </li>
+      @if(context.addLi === 'yes') {<li class="breadcrumbs__item">
+        <a class="breadcrumbs__link">@nameLink</a>
+      </li> }
+    </ul>
+  </div>
+</div>

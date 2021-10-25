@@ -1,0 +1,35 @@
+<section class="top-filter">
+  <h2 class="visually-hidden">Фильтры сортировки и положения товаров</h2>
+  <button class="top-filter__btn-show" type="button" aria-label="открыть меню фильтров"></button>
+  <div class="top-filter__items">
+    <form class="top-filter__form" action="#">
+      <select class="top-filter__sort select-style" aria-label="сортировать товары">
+        <option value="По названию">По названию</option>
+        <option value="По популярности">По популярности</option>
+        <option value="Сначала дешевые">Сначала дешевые</option>
+        <option value="Сначала дорогие">Сначала дорогие</option>
+        <option value="По алфавиту">По алфавиту</option>
+      </select>
+      <select class="top-filter__on-num select-style" aria-label="показать количество товаров">
+        <option value="по 12">по 12</option>
+        <option value="по 18">по 18</option>
+        <option value="по 24">по 24</option>
+        <option value="по 30">по 30</option>
+        <option value="по 36">по 36</option>
+      </select>
+    </form>
+
+    <button class="top-filter__list" type="button" aria-label="расположить товары списком в 2 колонки">
+      <svg class="top-filter__list-icon" width="35" height="35">
+        <use xlink:href="images/sprite.svg#list"></use>
+      </svg>
+    </button>
+    <button class="top-filter__grid top-filter__active" type="button"
+      aria-label="расположить товары в 3 колонки с большими карточками">
+
+      <svg class="top-filter__grid-icon" width="35" height="35">
+        <use xlink:href="images/sprite.svg#grid"></use>
+      </svg>
+    </button>
+  </div>
+</section>

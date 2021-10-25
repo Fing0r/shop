@@ -1,0 +1,87 @@
+.best-products {
+  text-align: center;
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px;
+    margin-bottom: 47px;
+
+    @include r($xga) {
+      grid-template-columns: repeat(4, minmax(130px, 1fr));
+      grid-gap: 15px;
+      margin-bottom: 24px;
+    }
+
+    @include r($md) {
+      grid-template-columns: repeat(2, minmax(130px, 1fr));
+      grid-gap: 5px;
+    }
+
+    @include l($xl) {
+      grid-template-columns: repeat(4, minmax(130px, 1fr));
+      grid-gap: 5px;
+      margin-bottom: 24px;
+    }
+
+  }
+
+  &__add {
+    display: inline-block;
+    padding: 11px 23px;
+    color: $green-900;
+    background-color: $white;
+    border: 1px solid $green-900;
+
+    &:hover {
+      background-color: $green-100;
+    }
+
+    &:active {
+      color: rgba($green-900, 0.5);
+      box-shadow: inset 0 10px 4px rgba($black, 0.1);
+    }
+
+  }
+}
+
+.product-filters {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 51px;
+  font-size: 15px;
+  @extend %opensans;
+  font-weight: 700;
+
+  @include r($md) {
+    flex-wrap: wrap;
+    gap: 15px 31px;
+  }
+
+  @include r($ml) {
+    font-size: 14px;
+  }
+
+  &__filter {
+    &:not(:last-child) {
+      margin-right: 24px;
+
+      @include r($md) {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__btn {
+    text-transform: uppercase;
+    transition: border-bottom-width 0.3s;
+
+    &:hover {
+      border-bottom: 3px solid $green-200;
+    }
+  }
+}
+
+.mixitup-control-active {
+  border-bottom: 3px solid $green-200;
+}

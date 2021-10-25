@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ФРЕШОК</title>
+  <link rel="icon" href="images/favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body>
+
+  @include('./components/_header.html')
+
+  @include('./components/_breadcrumbs.html', {
+  "addLi": "yes",
+  "nameLink": "Питахайя красная с белой мякотью"
+  })
+
+  <main class="main">
+
+    @include('./components/product page/_product-one.html')
+
+    @include('./components/product page/_interest.html')
+
+    @include('./components/product page/_modal.html')
+
+  </main>
+
+  @include('./components/_footer.html')
+
+  <script src="js/main.min.js"></script>
+  <script async="" src="/browser-sync/browser-sync-client.js?v=2.23.6"></script>
+</body>
+
+</html>

@@ -1,0 +1,404 @@
+.footer {
+  background-color: $dark-800;
+  color: $white;
+  letter-spacing: 0;
+
+  &__top {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    padding-top: 30px;
+
+    @include r($xl) {
+      padding-top: 25px;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__connection,
+  &__menu,
+  &__sub,
+  &__middle {
+    position: relative;
+
+    &::after {
+      border-bottom: 1px solid $white;
+      position: absolute;
+      opacity: 0.1;
+      bottom: 0;
+      width: 100vw;
+      left: 50%;
+      right: 50%;
+      margin: 0 -50vw;
+    }
+  }
+
+  &__middle {
+    display: flex;
+    padding-bottom: 30px;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    @include r($xl) {
+      padding-bottom: 0;
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+
+    &::after {
+      content: '';
+
+      @include r($xl) {
+        opacity: 0;
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 0;
+    align-items: center;
+
+    @include r($xl) {
+      flex-direction: column-reverse;
+    }
+  }
+
+  &__connection,
+  &__menu,
+  &__sub {
+    @include r($xl) {
+      padding-bottom: 24px;
+      margin-bottom: 20px;
+    }
+
+    &::after {
+      @include r($xl) {
+        content: '';
+      }
+    }
+  }
+
+  &__sub {
+    @include r($xl) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__menu {
+    padding-left: 71px;
+
+    @include r($xga) {
+      padding-left: 30px;
+    }
+
+    @include r($ml) {
+
+      padding-left: 36px;
+    }
+
+    @include r($se) {
+      padding-left: 0;
+    }
+
+    @include l($xl) {
+      padding-left: 71px;
+      margin: 0 auto 24px;
+    }
+  }
+
+  &__item {
+    margin-bottom: 18px;
+  }
+
+  &__link {
+    transition: opacity 0.2s;
+    margin-bottom: 18px;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__payment {
+    display: flex;
+
+    @include r($xl) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__system {
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+
+  &__system-icon {
+    fill: $white;
+  }
+}
+
+.sub {
+  max-width: 306px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 1;
+
+  &__label {
+    color: $white;
+    margin-bottom: 18px;
+    padding-bottom: 0;
+  }
+
+  &__input {
+    max-width: 181px;
+    width: 100%;
+    padding: 12px;
+    background-color: $white;
+    height: 40px;
+    border-radius: 6px 0 0 6px;
+
+    @include r($xl) {
+      max-width: 170px;
+    }
+
+    @include r($se) {
+      max-width: 160px;
+    }
+  }
+
+  &__btn {
+    height: 40px;
+    padding: 0 16px;
+    line-height: 1.4;
+    border-radius: 0 6px 6px 0;
+    @extend %opensans;
+    font-weight: 700;
+    color: $white;
+    font-size: 12px;
+    text-transform: uppercase;
+
+    @include r($se) {
+      padding: 0 12px;
+    }
+  }
+}
+
+.menu {
+  columns: 3;
+  column-gap: 77px;
+
+  @include r($xga) {
+    columns: 2;
+    column-gap: 50px;
+  }
+
+  @include r($xl) {
+    columns: 3;
+    column-gap: 45px;
+  }
+
+  @include r($md) {
+    columns: 2;
+  }
+
+  @include r($se) {
+    columns: 1;
+    column-gap: 0;
+  }
+
+  @include l($xga) {
+    columns: 2;
+    column-gap: 50px;
+  }
+
+  @include l($xl) {
+    columns: 3;
+    column-gap: 45px;
+  }
+
+  @include l($md) {
+    columns: 2;
+  }
+
+  &--mobile {
+    columns: 1;
+    margin-right: 0;
+
+    .menu {
+
+      &__item {
+        font-size: 18px;
+        line-height: 1.2;
+
+        &:not(:last-child) {
+          margin-bottom: 0;
+        }
+      }
+
+      &__link {
+        padding: 15px 15px 15px 0;
+        display: block;
+
+        @include r($md) {
+          padding: 10px;
+        }
+
+        @include l($xl) {
+          padding: 10px;
+        }
+      }
+    }
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 19px;
+    }
+  }
+
+  &__link {
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+.connection {
+  &--menu-mobile {
+    .connection {
+      &__list {
+        padding-top: 26px;
+        font-size: 18px;
+        margin-bottom: 9px;
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          border-top: 1px solid rgba($silver-600, 0.3);
+          top: 0;
+          width: 100vw;
+          left: 50%;
+          right: 50%;
+          margin: 0 -50vw;
+        }
+
+        & a {
+          &:not(:last-child) {
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      &__tel,
+      &__address {
+        position: relative;
+        padding: 9px 0 9px 39px;
+        line-height: 1;
+        display: block;
+
+        &::after {
+          content: '';
+          position: absolute;
+          background-image: url('../images/icons/icon-tel.svg');
+          width: 24px;
+          height: 24px;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          margin: auto 0;
+        }
+      }
+
+      &__address {
+        line-height: 1.2;
+
+        &::after {
+          background-image: url('../images/icons/loc.svg');
+          height: 32px;
+        }
+      }
+    }
+  }
+
+  &__list {
+    margin-bottom: 19px;
+
+    & a {
+      display: block;
+      transition: color 0.3s;
+
+      &:not(:last-child) {
+        margin-bottom: 18px;
+      }
+
+      &:hover {
+        color: $green-900;
+      }
+    }
+  }
+}
+
+.social {
+  display: flex;
+
+  @include r($xl) {
+    justify-content: center;
+  }
+
+  &__list {
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+
+  &__icon {
+    fill: $white;
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &--menu-mobile {
+    padding-bottom: 24px;
+    margin-bottom: 14px;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      border-bottom: 1px solid rgba($silver-600, 0.3);
+      bottom: 0;
+      width: 100vw;
+      left: 50%;
+      right: 50%;
+      margin: 0 -50vw;
+    }
+
+
+    @include r($xl) {
+      justify-content: flex-start;
+    }
+
+    .social {
+
+
+      &__icon {
+        fill: $dark-800;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

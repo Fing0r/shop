@@ -21,6 +21,7 @@
     @content;
   }
 }
+
 // @mixin r($width) {
 //   @media only screen and (max-width: $width + "px") {
 //     @content;
@@ -28,11 +29,28 @@
 // }
 
 @mixin l($width) {
-    @media screen and (orientation:landscape) and (max-width: $width + "px") {
-      @content;
-    }
+  @media screen and (orientation:landscape) and (max-width: $width + "px") {
+    @content;
+  }
+}
+
+@mixin mask($width, $height, $color, $svg) {
+  @if $svg == no {
+    mask-size: cover;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    background-color: $color;
+    width: $width+px;
+    height: $height+px;
   }
 
-  // @include r($md) {
-
-  // }
+  @else {
+    mask-image: url('../images/sprite.svg#'+$svg+'');
+    mask-size: cover;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    background-color: $color;
+    width: $width+px;
+    height: $height+px;
+  }
+}
