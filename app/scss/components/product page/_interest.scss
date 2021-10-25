@@ -68,13 +68,17 @@
       display: none;
     }
 
+    @include r($se) {
+       display: block;
+    }
+
     @include l($xl) {
       display: block;
     }
 
-    @include l($md) {
-      display: none;
-    }
+    // @include l($ml) {
+    //   display: none;
+    // }
 
     &:focus {
       fill: black;

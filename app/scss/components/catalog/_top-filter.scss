@@ -15,7 +15,6 @@
 
   @include l($md) {
     display: flex;
-    justify-content: space-between;
     width: 100%;
   }
 
@@ -115,7 +114,7 @@
 }
 
 .select2-container--open .select2-dropdown {
-  top: -1px
+  top: 0;
 }
 
 .select2-results__options {
@@ -193,11 +192,9 @@
   }
 }
 
-
 .select2-dropdown {
   width: max-content;
 }
-
 
 .select2 {
   &:not(:last-child) {
@@ -237,6 +234,14 @@
   @include r($ml) {
     padding: 12px 12px 12px 5px;
   }
+
+  @include l($xga) {
+     padding: 12px 12px 12px 5px;
+  }
+  
+  @include l($md) {
+    padding: 14px 12px 13px 5px;
+  }
 }
 
 .select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
@@ -244,6 +249,8 @@
   background-color: $green-100;
   color: inherit;
 }
+
+
 
 
 .jq-selectbox__select {
@@ -254,15 +261,18 @@
   background: transparent;
   border: 1px solid $silver-600;
   text-shadow: none;
-  max-width: max-content;
   transition: border-radius 0.3s, border 0.3s;
 
   @include r($ml) {
+    padding: 14px 30px 14px 6px;
+  }
+
+  @include r($md) {
     padding: 16px 30px 15px 6px;
   }
 
-  @include l($md) {
-    padding: 15px 40px 14px 13px;
+  @include l($xl) {
+    padding: 14px 40px 14px 13px;
   }
 
   &:hover {
@@ -299,6 +309,8 @@
   }
 }
 
+
+
 .jq-selectbox__trigger-arrow,
 .jq-selectbox__trigger {
   display: none;
@@ -313,7 +325,6 @@
   border-radius: 0 0 6px 6px;
   background: $white;
   box-shadow: none;
-  // top: 45px;
 }
 
 .jq-selectbox {
@@ -326,6 +337,18 @@
     &:hover {
       background-color: $green-100;
       color: $black;
+    }
+
+    @include r($ml) {
+       padding: 12px 12px 12px 14px;
+    }
+    
+    @include r($md) {
+       padding: 10px 12px 10px 14px;
+    }
+
+    @include l($xga) {
+      padding: 12px 12px 12px 14px;
     }
   }
 }
@@ -342,7 +365,7 @@
 }
 
 .jq-selectbox__select-text {
-  @include r($ml) {
+  @include r($md) {
     font-size: 12px;
   }
 

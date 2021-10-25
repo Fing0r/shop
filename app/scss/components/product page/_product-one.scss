@@ -1,6 +1,13 @@
 .product-one {
   margin-bottom: 85px;
 
+  
+  &__container {
+    @include r($xl) {
+      max-width: 690px;
+    }
+  }
+
   @include r($xl) {
     margin-bottom: 48px;
   }
@@ -374,6 +381,7 @@
 
   &__heart-icon {
     fill: $silver-600;
+    transition: fill 0.3s;
 
     &:hover {
       fill: $orange-900;
