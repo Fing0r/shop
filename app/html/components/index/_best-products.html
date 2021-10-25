@@ -1,0 +1,188 @@
+ <section class="section best-products">
+   <div class="container" data-ref="container-1">
+     <h2 class="title">
+       топовые товары
+     </h2>
+     <ul class="product-filters">
+       <li class="product-filters__filter">
+         <button class="product-filters__btn" data-filter="all" type="button">
+           все товары
+         </button>
+       </li>
+       <li class="product-filters__filter">
+         <button class="product-filters__btn" data-filter=".category-a" type="button">
+           фрукты
+         </button>
+       </li>
+       <li class="product-filters__filter">
+         <button class="product-filters__btn" data-filter=".category-b" type="button">
+           овощи
+         </button>
+       </li>
+       <li class="product-filters__filter">
+         <button class="product-filters__btn" data-filter=".category-c" type="button">
+           напитки
+         </button>
+       </li>
+       <li class="product-filters__filter">
+         <button class="product-filters__btn" data-filter=".category-d" type="button">
+           бакалея
+         </button>
+       </li>
+     </ul>
+     <ul class="best-products__list">
+       <li class="best-products__item mix category-a" data-fancybox="single">
+         @include('../_product-card.html', {
+         "card": "std",
+         "badges": "y",
+         "new": "y",
+         "sale": "y",
+         "hit": "",
+         "image": "1",
+         "width": "298",
+         "height": "215",
+         "name": "Ананас, 1кг",
+         "new-price": "999",
+         "old": "y",
+         "old-price": "1999",
+         "status": "",
+         "rating": "",
+         })
+       </li>
+
+       <li class="best-products__item mix category-a" data-fancybox="single">
+         @include('../_product-card.html', {
+         "card": "std",
+         "badges": "",
+         "new": "",
+         "sale": "",
+         "hit": "",
+         "image": "2",
+         "width": "298",
+         "height": "215",
+         "name": "Лимон, 1кг",
+         "new-price": "199",
+         "old": "",
+         "old-price": "",
+         "status": "",
+         "rating": "",
+         })
+       </li>
+
+       <li class="best-products__item mix category-a" data-fancybox="single">
+         @include('../_product-card.html', {
+         "card": "std",
+         "badges": "y",
+         "new": "",
+         "sale": "",
+         "hit": "y",
+         "image": "3",
+         "width": "298",
+         "height": "215",
+         "name": "Питахайя красная с белой мякотью, 1шт",
+         "new-price": "1019",
+         "old": "",
+         "old-price": "",
+         "status": "",
+         "rating": "",
+         })
+       </li>
+
+       <li class="best-products__item mix category-b" data-fancybox="single">
+         @include('../_product-card.html', {
+         "card": "std",
+         "badges": "y",
+         "new": "y",
+         "sale": "",
+         "hit": "",
+         "image": "4",
+         "width": "298",
+         "height": "215",
+         "name": "Перец оранжевый, 1кг",
+         "new-price": "349",
+         "old": "",
+         "old-price": "",
+         "status": "",
+         "rating": "",
+         })
+       </li>
+
+       <li class="best-products__item mix category-b" data-fancybox="single">
+         @include('../_product-card.html', {
+         "card": "std",
+         "badges": "y",
+         "new": "",
+         "sale": "",
+         "hit": "y",
+         "image": "5",
+         "width": "298",
+         "height": "215",
+         "name": "Морковь молодая с бабушкиной грядки, 1кг",
+         "new-price": "49",
+         "old": "",
+         "old-price": "",
+         "status": "",
+         "rating": "",
+         })
+       </li>
+
+       <li class="best-products__item mix category-c" data-fancybox="single">
+         @include('../_product-card.html', {
+         "card": "std",
+         "badges": "y",
+         "new": "",
+         "sale": "y",
+         "hit": "",
+         "image": "6",
+         "width": "298",
+         "height": "215",
+         "name": "Напиток сокосодержащий Sanpellegrino Aranciata Orange Красный апельсин безалкогольн...",
+         "new-price": "199",
+         "old": "yes",
+         "old-price": "299",
+         "status": "",
+         "rating": "",
+         })
+       </li>
+
+       <li class="best-products__item mix category-d" data-fancybox="single">
+         @include('../_product-card.html', {
+         "card": "std",
+         "badges": "y",
+         "new": "y",
+         "sale": "",
+         "hit": "",
+         "image": "7",
+         "width": "298",
+         "height": "215",
+         "name": "Кофе с коноплей органический Caffé Salomoni 250г",
+         "new-price": "877",
+         "old": "",
+         "old-price": "",
+         "status": "",
+         "rating": "",
+         })
+       </li>
+
+       <li class="best-products__item mix category-d" data-fancybox="single">
+         @include('../_product-card.html', {
+         "card": "std",
+         "badges": "",
+         "new": "",
+         "sale": "",
+         "hit": "",
+         "image": "8",
+         "width": "298",
+         "height": "215",
+         "name": "Кетчуп томатный детский органический Bio-Zentrale 500мл",
+         "new-price": "600",
+         "old": "",
+         "old-price": "",
+         "status": "",
+         "rating": "",
+         })
+       </li>
+     </ul>
+     <a class="best-products__add btn" href="#">Показать еще</a>
+   </div>
+ </section>

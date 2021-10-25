@@ -1,15 +1,26 @@
 html,
 body {
   height: 100%;
+  width: 100%;
+  // min-height: 100vh;
+  /* mobile viewport bug fix */
+  min-height: -webkit-fill-available;
 }
 
 html {
   overflow-x: hidden;
   margin-right: calc(-1 * (100vw - 100%));
   // убираю скролл при открытии меню, чтобы небыло смещения экрана
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+.wrapper {
+  overflow: hidden;
+  min-height: 100%;
 }
 
 body {
+  min-height: 100vh;
   font-size: 14px;
   line-height: 1.4;
   background-color: $white;
@@ -48,7 +59,7 @@ body {
 
   &--active {
     position: fixed;
-    height: 100%;
+    height: 110vh;
   }
 }
 
@@ -129,4 +140,14 @@ body {
     font-size: 24px;
     margin-bottom: 24px;
   }
+}
+
+.simplebar-track.simplebar-vertical {
+  width: 4px;
+  margin: 1px 2px 1px 0;
+}
+
+.simplebar-scrollbar {
+  background-color: $silver-600;
+  border-radius: 3px;
 }

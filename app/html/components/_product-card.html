@@ -1,0 +1,79 @@
+@if(context.card === 'std'){<article class="product-card@if(context.grid === 'y'){ product-card--grid}">
+  @if(context.badges === 'y') {
+  <div class="product-card__badges">@if(context.new === 'y') {
+    <span class="product-card__badge product-card__badge--new">
+      новинка
+    </span>} @if(context.sale === 'y') {
+    <span class="product-card__badge product-card__badge--sale">
+      -50%
+    </span>} @if(context.hit === 'y') {
+    <span class="product-card__badge product-card__badge--hit">
+      хит
+    </span>}
+  </div>}
+  <button class="product-card__heart" type="button" aria-label="добавить в избранное">
+    <svg class="product-card__heart-icon">
+      <use xlink:href="images/sprite.svg#heart"></use>
+    </svg>
+  </button>
+  <img class="product-card__img" src="images/card/product-card_photo-@image.jpg" width="@width" height="@height"
+    alt="@name">
+  <div class="product-card__box"> @if(context.grid === 'y'){
+    <div class="product-card__info">
+      @if(context.status === 'n') {<span class="product-card__status product-card__status--not-available">нет в
+        наличии</span>}
+      @if(context.status === 'o') {<span
+        class="product-card__status product-card__status--running-out">заканчивается</span>}
+      @if(context.status === 's') {<span class="product-card__status product-card__status--in-stock">в наличии</span>}
+      <span class="product-card__rating">
+        @rating
+      </span>
+    </div> }
+    <h3 class="product-card__title">@name</h3>
+    <div class="product-card__bottom">
+      <div class="product-card__offers"> @if(context.old === 'y') {
+        <span class="product-card__price product-card__price--old">@old-price ₽</span>}
+        <span class="product-card__price product-card__price--new">@new-price ₽</span>
+      </div>
+      <button class="product-card__cart btn" type="button" aria-label="добавить товар в корзину">
+        <svg class="cart-cart-icon">
+          <use xlink:href="images/sprite.svg#cart"></use>
+        </svg>
+      </button>
+    </div>
+  </div>
+</article>} @if(context.card === 'min'){<article class="product-card product-card--min">
+  @if(context.badges === 'y') {
+  <div class="product-card__badges">@if(context.new === 'y') {
+    <span class="product-card__badge product-card__badge--new">
+      новинка
+    </span>} @if(context.sale === 'y') {
+    <span class="product-card__badge product-card__badge--sale">
+      -50%
+    </span>} @if(context.hit === 'y') {
+    <span class="product-card__badge product-card__badge--hit">
+      хит
+    </span>}
+  </div>}
+  <img class="product-card__img" src="images/card/litle/product-card_photo-@image--min.jpg" width="@width"
+    height="@height" alt="@name">
+  <div class="product-card__box">
+    <h3 class="product-card__title">@name</h3>
+    @if(context.status === 'n') {<span class="product-card__status product-card__status--not-available">нет в
+      наличии</span>}
+    @if(context.status === 'o') {<span
+      class="product-card__status product-card__status--running-out">заканчивается</span>}
+    @if(context.status === 's') {<span class="product-card__status product-card__status--in-stock">в наличии</span>}
+    <div class="product-card__bottom">
+      <div class="product-card__offers">
+        <span class="product-card__price product-card__price--new">@new-price<span>₽</span></span>
+        @if(context.old === 'y') {
+        <span class="product-card__price product-card__price--old">@old-price ₽</span>}
+      </div>
+      <span class="product-card__rating">
+        @rating
+      </span>
+    </div>
+  </div>
+</article>}
+

@@ -1,0 +1,33 @@
+.partners {
+  margin-bottom: 68px;
+
+  &__items {
+    padding: 0 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include r($xga) {
+      justify-content: center;
+      padding: 0;
+      margin: 0 -15px;
+    }
+  }
+
+  &__link {
+    opacity: 0.5;
+    transition: opacity 0.3s;
+    display: block;
+    text-align: center;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.slick-center {
+  .partners__link {
+    opacity: 1;
+  }
+}

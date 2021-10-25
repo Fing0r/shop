@@ -1,0 +1,149 @@
+.interest {
+  margin-bottom: 47px;
+  width: 100%;
+  position: relative;
+
+  @include r($xl) {
+    margin-bottom: 62px;
+  }
+
+  @include l($xl) {
+    margin-bottom: 45px;
+  }
+
+
+  &__container {
+    position: relative;
+    //пришлось добавить, чтобы стрелки отображались, так-как overflow: hidden; был неоходим у &__slider, чтобы слайды обрезались за пределами контейнера
+  }
+
+  &__slider {
+    overflow: hidden;
+  }
+
+  &__list {
+    width: 100%;
+    display: flex;
+  }
+
+  &__item {
+    flex-shrink: 0;
+  }
+
+  &__title {
+    margin-bottom: 58px;
+    text-transform: uppercase;
+    @extend %ruda;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 1.2;
+    letter-spacing: 0.03em;
+    position: relative;
+
+    @include r($xl) {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
+    @include l($xl) {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__prev,
+  &__next {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: -16px;
+    z-index: 998;
+    width: 62px;
+    height: 62px;
+    background-color: rgba($white, 0.8);
+    border: 1px solid $silver-600;
+    border-radius: 6px;
+    transform: translateY(2%);
+
+    @include r($md) {
+      display: none;
+    }
+
+    @include l($xl) {
+      display: block;
+    }
+
+    @include l($md) {
+      display: none;
+    }
+
+    &:focus {
+      fill: black;
+      box-shadow: 0 0 0 3px rgba($green-900, 0.5);
+      background-color: $white;
+    }
+
+    &:hover,
+    &:active {
+      fill: $green-900;
+    }
+
+    &:hover {
+      background-color: $green-200;
+    }
+
+    &:active {
+      background-color: $white;
+    }
+  }
+
+  &__prev {
+    right: 104px;
+  }
+
+  &__next {
+    right: 14px;
+  }
+
+  &__arrow-icon {
+    transform: translateY(6%);
+  }
+
+  &__dots {
+    position: absolute;
+    text-align: center;
+  }
+
+  &__slider &__dots {
+    bottom: -25px;
+    display: none;
+
+    //немог перебить классы плагина, пришлось так
+    @include r($xl) {
+      bottom: -30px;
+    }
+
+    @include r($md) {
+      display: block;
+    }
+
+    @include l($xl) {
+      display: none;
+    }
+  }
+
+  &__dot {
+    background-color: rgba($white, 0.15);
+    width: 10px;
+    height: 10px;
+    border: 1px solid $silver-600;
+    border-radius: 50%;
+
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+
+    &--active {
+      background-color: $green-900;
+    }
+  }
+}

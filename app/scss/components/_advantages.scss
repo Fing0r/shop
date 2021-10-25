@@ -1,0 +1,87 @@
+.advantages {
+  background-color: $silver-100;
+  padding: 48px 0 30px;
+  letter-spacing: 0;
+
+  @include r($xga) {
+    display: flex;
+  }
+
+  @include r($xl) {
+    padding: 31px 0;
+  }
+
+  &__items {
+    display: flex;
+    justify-content: center;
+    padding-left: 20px;
+
+    @include r($xl) {
+      display: block;
+      flex-direction: column;
+      align-items: flex-end;
+      padding-left: 74px;
+    }
+  }
+
+  &__item {
+    max-width: 190px;
+    position: relative;
+
+    @include r($xl) {
+      max-width: 330px;
+    }
+
+    &:not(:last-child) {
+      margin-right: 140px;
+
+      @include r($xl) {
+        margin-bottom: 31px;
+        margin-right: 0;
+      }
+    }
+
+    &--scooter,
+    &--return,
+    &--support {
+      &::after {
+        content: '';
+        position: absolute;
+        left: -73px;
+        top: 0;
+        @include mask(50, 50, $green-900, no);
+      }
+    }
+
+    &--scooter {
+      &::after {
+        mask-image: url('../images/sprite.svg#scooter');
+        height: 43px;
+        top: 2px;
+      }
+    }
+
+    &--return {
+      &::after {
+        mask-image: url('../images/sprite.svg#return');
+      }
+    }
+
+    &--support {
+      &::after {
+        mask-image: url('../images/sprite.svg#support');
+      }
+    }
+  }
+
+  &__title {
+    margin-bottom: 7px;
+    @extend %opensans;
+    font-weight: 600;
+    @include line-clamp(16, 1.4, 1);
+  }
+
+  &__text {
+    @include line-clamp(14, 1.4, 2);
+  }
+}

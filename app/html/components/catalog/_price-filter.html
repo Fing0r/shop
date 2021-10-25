@@ -1,0 +1,19 @@
+<section class="price-filter@if(context.filter === 'yes'){ filter}">
+  <h2 class="filter__title filter__title--active" tabindex="0">Цена</h2>
+  <form class="filter__form" action="#">
+    <div class="price-filter__interval">
+      <label class="price-filter__from" tabindex="0">
+        от
+        <input class="price-filter__min" id="input-0" type="number" name="min-interval" value="0" tabindex="0">
+        ₽
+      </label>
+      <label class="price-filter__to" tabindex="0">
+        до
+        <input class="price-filter__max" id="input-1" type="number" name="max-interval" value="0"tabindex="0">
+        ₽
+      </label>
+    </div>
+    <div class="price-filter__input" id="range-slider" data-min="0" data-max="1200" data-from="100" data-to="1100">
+    </div>
+  </form>
+</section>

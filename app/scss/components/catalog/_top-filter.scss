@@ -1,0 +1,352 @@
+.top-filter {
+  line-height: 1.2;
+  margin-bottom: 48px;
+  position: relative;
+
+  @include r($xga) {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  @include r($md) {
+    justify-content: flex-start;
+  }
+
+  @include l($md) {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  @include r($xl) {
+    margin-bottom: 30px;
+  }
+
+  &__btn-show {
+    width: 47px;
+    height: 47px;
+    background-color: $silver-100;
+    border-radius: 3px;
+    margin-right: 10px;
+    display: none;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 32px;
+      height: 34px;
+      mask-image: url('../images/sprite.svg#show');
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: cover;
+      background-color: $green-900;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+
+
+    @include r($xga) {
+      display: block;
+    }
+  }
+
+  &__items {
+    display: flex;
+  }
+
+  &__form,
+  &__list {
+    margin-right: 15px;
+    display: flex;
+
+    @include r($xl) {
+      margin-right: 0;
+    }
+  }
+
+  &__sort {
+    margin-right: 10px;
+
+    @include r($xl) {
+      margin-right: 6px;
+    }
+  }
+
+  &__grid,
+  &__list {
+    padding: 6px;
+    background-color: $silver-100;
+    border-radius: 3px;
+    line-height: 0;
+
+    &:hover {
+      background-color: $green-100;
+    }
+
+    @include r($xl) {
+      display: none;
+    }
+  }
+
+  &__grid-icon,
+  &__list-icon {
+    fill: $silver-600
+  }
+
+  &__active {
+    & svg {
+      fill: $green-900;
+      transition: fill 0.3s;
+    }
+  }
+}
+
+.select2-container--default .select2-results__option--selected {
+  display: none;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field {
+  display: none;
+}
+
+.select2-container--open .select2-dropdown {
+  top: -1px
+}
+
+.select2-results__options {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  @include r($md) {
+    font-size: 11px;
+  }
+}
+
+.select2-container--default .select2-selection--single {
+  background-color: transparent;
+  border: none;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: inherit;
+  line-height: 1.2;
+  padding: 14px 41px 14px 10px;
+  border: 1px solid $silver-600;
+  border-radius: 3px;
+
+  @include r($ml) {
+    font-size: 14px;
+  }
+
+  @include r($md) {
+    padding: 16px 28px 15px 6px;
+    font-size: 12px;
+  }
+
+  @include l($md) {
+    padding: 15px 40px 14px 13px;
+    font-size: 14px;
+  }
+
+  &:hover {
+    border: 1px solid $dark-500;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    background-image: url('../images/icons/chevron.svg');
+    width: 6px;
+    height: 11px;
+    transform: rotate(90deg);
+    right: 17px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+
+    @include r($ml) {
+      right: 13px;
+    }
+  }
+
+  &:hover {
+    &::after {
+      transform: rotate(90deg) scale(-1.1);
+    }
+  }
+
+  &--active {
+    border: 1px solid $dark-500;
+    box-shadow: 0 0 0 3px $green-200;
+    border-radius: 3px 3px 0 0;
+    transition: border-radius 0.3s;
+
+    &::after {
+      transform: rotate(-90deg);
+    }
+  }
+}
+
+
+.select2-dropdown {
+  width: max-content;
+}
+
+
+.select2 {
+  &:not(:last-child) {
+    margin-right: 14px;
+
+    @include r($ml) {
+      margin-right: 10px;
+    }
+
+    @include l($xl) {
+      margin-right: 10px;
+    }
+  }
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+  border: none;
+}
+
+.select2-container--open .select2-dropdown--below {
+  border: 1px solid #C1C1C1;
+  border-top: none;
+  border-radius: 6px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.select2-search--dropdown {
+  padding: 0px;
+}
+
+.select2-results__option {
+  padding: 8px 12px 8px 8px;
+
+  line-height: 1.2;
+
+  @include r($ml) {
+    padding: 12px 12px 12px 5px;
+  }
+}
+
+.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+  transition: background-color 0.2s;
+  background-color: $green-100;
+  color: inherit;
+}
+
+
+.jq-selectbox__select {
+  height: auto;
+  padding: 14px 44px 14px 14px;
+  box-shadow: none;
+  border-radius: 3px;
+  background: transparent;
+  border: 1px solid $silver-600;
+  text-shadow: none;
+  max-width: max-content;
+  transition: border-radius 0.3s, border 0.3s;
+
+  @include r($ml) {
+    padding: 16px 30px 15px 6px;
+  }
+
+  @include l($md) {
+    padding: 15px 40px 14px 13px;
+  }
+
+  &:hover {
+    border: 1px solid $dark-500;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    background-image: url('../images/icons/chevron.svg');
+    width: 6px;
+    height: 11px;
+    transform: rotate(90deg);
+    right: 17px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+
+    @include r($ml) {
+      right: 13px;
+    }
+  }
+
+  &:hover {
+    &::after {
+      transform: rotate(90deg) scale(-1.1);
+    }
+  }
+
+  &--active {
+    &::after {
+      transform: rotate(-90deg);
+    }
+  }
+}
+
+.jq-selectbox__trigger-arrow,
+.jq-selectbox__trigger {
+  display: none;
+}
+
+.jq-selectbox__dropdown {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 1px solid $silver-600;
+  box-sizing: border-box;
+  border-radius: 0 0 6px 6px;
+  background: $white;
+  box-shadow: none;
+  // top: 45px;
+}
+
+.jq-selectbox {
+
+  & li {
+    padding: 8px 12px 8px 14px;
+    margin-bottom: 0;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: $green-100;
+      color: $black;
+    }
+  }
+}
+
+.jq-selectbox.focused .jq-selectbox__select {
+  border: 1px solid $dark-500;
+  box-shadow: 0 0 0 3px $green-200;
+  border-radius: 3px 3px 0 0;
+  transition: border-radius 0.3s;
+}
+
+.sel {
+  display: none;
+}
+
+.jq-selectbox__select-text {
+  @include r($ml) {
+    font-size: 12px;
+  }
+
+  @include l($md) {
+    font-size: 14px;
+  }
+}

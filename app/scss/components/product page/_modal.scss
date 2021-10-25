@@ -1,0 +1,193 @@
+.modal {
+  position: fixed;
+  width: 100%;
+  background-color: rgba($black, 0.15);
+  top: 0;
+  bottom: -60px;
+  left: 0;
+  z-index: 1000;
+  padding: 54px 96px;
+  opacity: 0;
+  visibility: hidden;
+  overflow-x: hidden;
+  transition: 0.5s linear;
+
+  @include r($xga) {
+    padding: 0;
+  }
+
+  &--active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__body {
+    background-color: $white;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-height: 972px;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+
+    @include r($xga) {
+      border-radius: 0;
+      min-height: 100vh;
+    }
+  }
+
+  &__content {
+    padding-top: 60px;
+    width: 100%;
+    display: flex;
+
+    @include r($xga) {
+      padding-top: 0;
+      align-items: center;
+    }
+  }
+
+  &__slide {
+    flex-shrink: 0;
+  }
+
+  &__close {
+    position: absolute;
+    right: 38px;
+    top: 38px;
+    z-index: 1001;
+
+    @include r($md) {
+      right: 26px;
+      top: 26px;
+    }
+  }
+
+  &__close-icon {
+    fill: rgba($black, 0.15);
+
+    @include r($md) {
+      width: 18px;
+      height: 18px;
+      fill: $black;
+    }
+  }
+
+  &__img {
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+
+    @include r($xga) {
+      width: 650px;
+      height: 650px;
+    }
+
+    @include r($md) {
+      width: 360px;
+      height: 360px;
+    }
+
+    @include l($xl) {
+      width: 90vh;
+      height: 90vh;
+    }
+  }
+
+  &__prev,
+  &__next {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    z-index: 998;
+    width: 62px;
+    height: 62px;
+    background-color: rgba($white, 0.8);
+    border-radius: 6px;
+    transform: translateY(-50%);
+
+     &:focus {
+       fill: black;
+       box-shadow: 0 0 0 3px rgba($green-900, 0.5);
+     }
+
+     &:hover,
+     &:active {
+       fill: $green-900;
+     }
+
+     &:hover {
+      background-color: rgba($green-200, 0.8);
+
+     }
+
+     &:active {
+       background-color: rgba($white, 0.8);
+     }
+  }
+
+  &__prev {
+    left: 60px;
+
+    @include r($xga) {
+      left: 2px;
+    }
+
+    // @include l($xl) {
+    //    left: 2px;
+    // }
+  }
+
+  &__next {
+    right: 60px;
+
+    @include r($xga) {
+      right: 2px;
+    }
+
+    // @include l($xl) {
+    //    right: 2px;
+    // }
+  }
+
+  &__arrow-icon {
+    transform: translateY(6%);
+  }
+
+  &__body &__dots {
+    bottom: 102px;
+
+    //немог перебить классы плагина, пришлось так
+    @include r($xga) {
+      position: fixed;
+      bottom: 30px;
+    }
+
+    @include l($xl) {
+       display: none;
+    }
+  }
+
+  &__dots {
+    position: absolute;
+    text-align: center;
+  }
+
+  &__dot {
+    background-color: rgba($white, 0.15);
+    width: 10px;
+    height: 10px;
+    border: 1px solid $silver-600;
+    border-radius: 50%;
+
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+
+    &--active {
+      background-color: $green-900;
+    }
+  }
+
+}
