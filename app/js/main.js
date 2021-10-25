@@ -1,5 +1,5 @@
  //modal
- 
+
  const modalLinks = document.querySelectorAll('.modal-link');
  const body = document.querySelector('body');
  const lockPadding = document.querySelectorAll('.lock-padding');
@@ -121,7 +121,7 @@
    }
  })();
 
-// --------------------------------------------------------------------------------------------------------------
+ // --------------------------------------------------------------------------------------------------------------
 
  //slider
  const productoneSlider = document.querySelector('.product-one__slider');
@@ -597,10 +597,10 @@
 
 
 
-// -----------------------------------------------------------------------------------------------
+ // -----------------------------------------------------------------------------------------------
 
 
- 
+
  // $('.interest__list').slick({
  //     prevArrow: '<button type="button" class="interest__slick-prev" aria-label="назад"><svg class="interest__arrow-icon" width="20" height="32"><use xlink:href="images/sprite.svg#prewArrow"></use></svg></button>',
  //     nextArrow: '<button type="button" class="interest__slick-next" aria-label="вперед"><svg class="interest__arrow-icon" width="20" height="32"><use xlink:href="images/sprite.svg#nextArrow"></use></svg></button>',
@@ -612,17 +612,17 @@
 
  // document.querySelector('.product-one__btn').addEventListener('click', () => {})
 
-   // modal
-  //  $('.product-one__wrapper').on('click', function () {
-    //  $('.modal').addClass('modal--active');
-    //  $('html').addClass('lock');
-  //  });
+ // modal
+ //  $('.product-one__wrapper').on('click', function () {
+ //  $('.modal').addClass('modal--active');
+ //  $('html').addClass('lock');
+ //  });
 
-  //  $('.modal, .modal__close').on('click', function () {
-  //    $('.modal').removeClass('modal--active');
-  //    $('html').removeClass('lock');
-  //  });
+ //  $('.modal, .modal__close').on('click', function () {
+ //    $('.modal').removeClass('modal--active');
+ //    $('html').removeClass('lock');
+ //  });
 
-  //  $('.modal__body').on('click', function (e) {
-  //    e.stopPropagation();
-  //  });
+ //  $('.modal__body').on('click', function (e) {
+ //    e.stopPropagation();
+ //  });
